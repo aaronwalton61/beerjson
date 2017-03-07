@@ -1,0 +1,129 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<title>Beer List</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0"/>
+
+<link rel="stylesheet" href="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.css" />
+<link rel="stylesheet" href="css/styles.css" />
+
+</head>
+    
+<body>
+        
+<div data-role="page" id="Beers" class="ui-body ui-body-a">
+    <div data-role="header">
+        <a href="#About" data-icon="info">About</a>
+        <h1>List</h1>
+        <a href="#addit" data-icon="plus">Add</a>
+    </div>
+    <div data-role="content">
+         <ul id="beerList" data-role="listview" data-filter="true"></ul>
+    </div>
+  <footer data-role="footer" data-position="fixed" data-id="myfooter">
+     <nav data-role="navbar" data-iconpos="left">
+        <ul>
+           <li><a href="#Beers" class="ui-btn-persist">All</a></li>
+           <li><a href="#Cellar">Cellar</a></li>
+           <li><a href="#Deep">Deep</a></li>
+           <li><a href="#Last100">100</a></li>
+           <li><a href="lists.php" data-icon="bars">Lists</a></li>
+       </lu></nav></footer>
+</div>
+    
+<div data-role="page" id="Deep" class="ui-body ui-body-a">
+    <div data-role="header">
+        <a href="#About" data-icon="info">About</a>
+        <h1>Deep</h1>
+        <a href="#addit" data-icon="plus">Add</a>
+    </div>
+    <div data-role="content">
+         <ul id="beerDeep" data-role="listview" data-filter="true"></ul>
+    </div>
+  <footer data-role="footer" data-position="fixed" data-id="myfooter">
+     <nav data-role="navbar" data-iconpos="left">
+        <ul>
+           <li><a href="#Beers">All</a></li>
+           <li><a href="#Cellar">Cellar</a></li>
+           <li><a href="#Deep" class="ui-btn-persist">Deep</a></li>
+           <li><a href="#Last100">100</a></li>
+           <li><a href="lists.php" data-icon="bars">Lists</a></li>
+       </lu></nav></footer>
+</div>
+    
+<div data-role="page" id="Cellar" class="ui-body ui-body-a">
+    <div data-role="header">
+        <a href="#About" data-icon="info">About</a>
+        <h1>Cellar</h1>
+        <a href="#addit" data-icon="plus">Add</a>
+    </div>
+    <div data-role="content">
+         <ul id="beerCellar" data-role="listview" data-filter="true"></ul>
+    </div>
+  <footer data-role="footer" data-position="fixed" data-id="myfooter">
+     <nav data-role="navbar" data-iconpos="left">
+        <ul>
+           <li><a href="#Beers">All</a></li>
+           <li><a href="#Cellar" class="ui-btn-active ui-btn-persist">Cellar</a></li>
+           <li><a href="#Deep">Deep</a></li>
+           <li><a href="#Last100">100</a></li>
+           <li><a href="lists.php" data-icon="bars">Lists</a></li>
+       </lu></nav></footer>
+</div>
+   
+<div data-role="page" id="Last100" class="ui-body ui-body-a">
+    <div data-role="header">
+        <a href="#About" data-icon="info">About</a>
+        <h1>Last100</h1>
+        <a href="#addit" data-icon="plus">Add</a>
+    </div>
+    <div data-role="content">
+         <ul id="beerLast" data-role="listview" data-filter="true"></ul>
+    </div>
+  <footer data-role="footer" data-position="fixed" data-id="myfooter">
+     <nav data-role="navbar" data-iconpos="left">
+        <ul>
+           <li><a href="#Beers">All</a></li>
+           <li><a href="#Cellar">Cellar</a></li>
+           <li><a href="#Deep">Deep</a></li>
+           <li><a href="#Last100" class="ui-btn-persist">100</a></li>
+           <li><a href="lists.php" data-icon="bars">Lists</a></li>
+       </lu></nav></footer>
+</div>
+
+<div data-role="page" id="About" class="">
+    <div id="about" title="About" class="panel">
+      <h1>About My Beers</h1>
+    </div>
+    <div data-role="content">
+      <p><img src="http://aaronwalton.org/iui/iui/iui-logo-touch-icon.png"/>&nbsp;<img src="apple-touch-icon.png"/></p>
+      <p>beer Web App using the jQuery Mobile JavaScript Library</p>
+      <table><tr><td>Color key:
+	<br>&nbsp;&nbsp;<font color=green>Green</font> at Home
+	<br>&nbsp;&nbsp;<font color=blue>Blue</font> at Mall
+	<br>&nbsp;&nbsp;<font color=yellow>Yellow</font> at Suwanee
+	<br>&nbsp;&nbsp;<font color=purple>Purple</font> at Duluth
+	<br>&nbsp;&nbsp;<font color=orange>Orange</font> at Bev Super
+	<br>&nbsp;&nbsp;<font color=red>Red</font> want it</td>
+	<td><img src='images/bottle.png'> Bottle
+	<br><img src='images/draught.gif'> Draft
+	<br><img src='images/can.png'> Can
+	<br><img src='images/cask.png'> Cask/Firkin
+	<br><img src='images/tulip.gif'> High Gravity
+	<br><img src='images/what.png'> None or ?
+	</td></tr></table>
+    </div>
+</div>
+
+<script src="http://code.jquery.com/jquery-1.11.1.min.js"></script>
+<script src="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.js"></script>
+<script src="js/beerlist.js"></script>
+<script src="js/cellarlist.js"></script>
+<script src="js/deeplist.js"></script>
+<script src="js/lastlist.js"></script>
+<script src="js/beerdetails.js"></script>
+<!-- <script src="js/reportlist.js"></script> -->
+
+</body>
+
+</html>
