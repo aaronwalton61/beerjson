@@ -1,7 +1,7 @@
 <?php
 include 'config.php';
 
-$sql = "SELECT * FROM Beer b WHERE b.beer_id=:id";
+$sql = "SELECT * FROM BeerServings b WHERE b.beer_id=:id";
 
 try {
 	$dbh = new PDO("mysql:host=$dbhost;dbname=$dbname", $dbuser, $dbpass);	
@@ -9,9 +9,9 @@ try {
 	$stmt = $dbh->prepare($sql);  
 	$stmt->bindParam("id", $_GET[id]);
 	$stmt->execute();
-	$beer = $stmt->fetchObject();  
+	$servings = $stmt->fetchAll(PDO::FETCH_OBJ);  
 	$dbh = null;
-	echo '{"item":'. json_encode($beer) .'}'; 
+	echo '{"items":'. json_encode($servings) .'}'; 
 } catch(PDOException $e) {
 	echo '{"error":{"text":'. $e->getMessage() .'}}'; 
 }
