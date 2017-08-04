@@ -2,7 +2,7 @@
 <html>
 <head>
 </head>
-    
+
 <body>
 
 <div id="detailsPage" data-role="page" data-add-back-btn="true">
@@ -10,7 +10,7 @@
       <h1>Beer Details</h1>
    </div>
 
-   <div data-role="content"> 
+   <div data-role="content">
   	<img id="beerPic"/>
 	<div id="beerDetails">
            <h3 id="beerName"></h3>
@@ -24,6 +24,8 @@
            <ul id="swipeList" data-role="listview" data-split-icon="gear" data-split-theme="a" data-inset="true"></ul>
            <p>I'm the expanded content.</p>
         </div>
+        <button data-inline="true">Inline</button>
+        <button data-enhanced="true" class="ui-button ui-button-inline ui-corner-all ui-shadow ui-widget">Enhanced</button>
 
     <ul id="actionList" data-role="listview" data-inset="true"></ul>
   </div>
