@@ -1,16 +1,16 @@
 <!DOCTYPE HTML>
 <html>
 <head>
-<title>Beer List</title>
+  <title>Beer List</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0"/>
 
-<link rel="stylesheet" href="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.css" />
-<link rel="stylesheet" href="css/styles.css" />
-
+  <link href="http://beer.aaronwalton.org/apple-touch-icon.png" rel="icon" type="image/x-icon"/>
+  <link rel="stylesheet" href="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.css" />
+  <link rel="stylesheet" href="css/styles.css" />
 </head>
-    
+
 <body>
-        
+
 <div data-role="page" id="Beers" class="ui-body ui-body-a">
     <div data-role="header">
         <a href="#About" data-icon="info">About</a>
@@ -30,7 +30,7 @@
            <li><a href="lists.php" data-icon="bars">Lists</a></li>
        </lu></nav></footer>
 </div>
-    
+
 <div data-role="page" id="Deep" class="ui-body ui-body-a">
     <div data-role="header">
         <a href="#About" data-icon="info">About</a>
@@ -50,7 +50,7 @@
            <li><a href="lists.php" data-icon="bars">Lists</a></li>
        </lu></nav></footer>
 </div>
-    
+
 <div data-role="page" id="Cellar" class="ui-body ui-body-a">
     <div data-role="header">
         <a href="#About" data-icon="info">About</a>
@@ -70,7 +70,7 @@
            <li><a href="lists.php" data-icon="bars">Lists</a></li>
        </lu></nav></footer>
 </div>
-   
+
 <div data-role="page" id="Last100" class="ui-body ui-body-a">
     <div data-role="header">
         <a href="#About" data-icon="info">About</a>
