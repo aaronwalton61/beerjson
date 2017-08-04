@@ -14,6 +14,7 @@ function displayBeer(data) {
     $('#beerName').text(beer.Name);
     $('#beerCharacter').text(beer.Characteristics);
     if (beer.cellared > 0) {
+       $('#beerCellared').text(beer.cellared);
        $('#beerCellar').text(beer.CellarServing);
        $('#beerCellarDate').text(beer.CellarDate);
     }

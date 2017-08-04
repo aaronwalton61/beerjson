@@ -15,6 +15,7 @@
 	<div id="beerDetails">
            <h3 id="beerName"></h3>
            <p id="beerCharacter"></p>
+           <p id="beerCellared"></p>
            <p id="beerCellar"></p>
            <p id="beerCellarDate"></p>
    	</div>
