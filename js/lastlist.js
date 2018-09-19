@@ -12,9 +12,9 @@ function getLastList() {
 		$('#beerLast li').remove();
 		beers = data.items;
 		$.each(beers, function(index, beer) {
-			$('#beerLast').append('<li><a href="beerdetails.php?id=' + beer.beer_id + '">' +
+			$('#beerLast').append('<li><a href="beerdetails.html?id=' + beer.beer_id + '">' +
 					'<img src="images/bottle.png"/>' +
-					'<h4>' + beer.Name + '</h4><p> cellared on: ' + beer.CellarDate + 
+					'<h4>' + beer.Name + '</h4><p> cellared on: ' + beer.CellarDate +
                                         ' in ' + beer.CellarServing +
 					' ' + beer.BeerAdvocate + '</p>' +
 					'<span class="ui-li-count">' + beer.cellared + '</span></a></li>');
