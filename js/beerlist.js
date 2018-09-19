@@ -11,7 +11,7 @@ function getBeerList() {
 		$('#beerList li').remove();
 		beers = data.items;
 		$.each(beers, function(index, beer) {
-			$('#beerList').append('<li><a href="beerdetails.php?id=' + beer.beer_id + '">' +
+			$('#beerList').append('<li><a href="beerdetails.html?id=' + beer.beer_id + '">' +
 					'<img src="images/hooters.png"/>' +
 					'<h4>' + beer.Name + '</h4><p> cellared on: ' + beer.CellarDate + 
                                         ' in ' + beer.CellarServing +

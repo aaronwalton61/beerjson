@@ -2,23 +2,23 @@ var serviceURL = "http://beertest.aaronwalton.org/services/";
 
 var beers;
 
-$('#Last100').bind('pageinit', function(event) {
-	getLastList();
+$('#Beers').bind('pageinit', function(event) {
+	getAllList();
 });
 
-function getLastList() {
-        console.log('#Last100 - getLastList()')
-	    $.getJSON(serviceURL + 'getlast.php', function(data) {
-		$('#beerLast li').remove();
+function getAllList() {
+    console.log('#Beers - getAllList()');
+	$.getJSON(serviceURL + 'getbeers.php', function(data) {
+		$('#beerAll li').remove();
 		beers = data.items;
 		$.each(beers, function(index, beer) {
-			$('#beerLast').append('<li><a href="beerdetails.php?id=' + beer.beer_id + '">' +
-					'<img src="images/bottle.png"/>' +
+			$('#beerAll').append('<li><a href="beerdetails.php?id=' + beer.beer_id + '">' +
+					'<img src="images/hooters.png"/>' +
 					'<h4>' + beer.Name + '</h4><p> cellared on: ' + beer.CellarDate + 
                                         ' in ' + beer.CellarServing +
 					' ' + beer.BeerAdvocate + '</p>' +
 					'<span class="ui-li-count">' + beer.cellared + '</span></a></li>');
 		});
-		$('#beerLast').listview('refresh');
+		$('#beerAll').listview('refresh');
 	});
 }
