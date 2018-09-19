@@ -1,7 +1,7 @@
 # beerlist 
 a more organized JQuery Mobile Beer List application
 
-#Database Tables
+# Database Tables
 
 Field           Type                Null      Key     Default       Extra
 beer_id         int(10) unsigned    NO        PRI     NULL          auto_increment
