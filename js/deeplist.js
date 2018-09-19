@@ -7,13 +7,14 @@ $('#Deep').bind('pageinit', function(event) {
 });
 
 function getbeerDeep() {
+    console.log('@Deep - getbeerDeep()');
 	$.getJSON(serviceURL + 'getdeep.php', function(data) {
 		$('#beerDeep li').remove();
 		beers = data.items;
 		$.each(beers, function(index, beer) {
-			$('#beerDeep').append('<li><a href="beerdetails.php?id=' + beer.beer_id + '">' +
+			$('#beerDeep').append('<li><a href="beerdetails.html?id=' + beer.beer_id + '">' +
 					'<img src="images/hooters.png"/>' +
-					'<h4>' + beer.Name + '</h4><p>' + beer.cellared + ' cellared on: ' + beer.CellarDate + 
+					'<h4>' + beer.Name + '</h4><p>' + beer.cellared + ' cellared on: ' + beer.CellarDate +
                                         ' in ' + beer.CellarServing +
 					' ' + beer.BeerAdvocate + '</p>' +
 					'<span class="ui-li-count">' + beer.cellared + '</span></a></li>');

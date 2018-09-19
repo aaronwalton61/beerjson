@@ -1,16 +1,14 @@
 <!DOCTYPE HTML>
 <html>
 <head>
-  <title>Beer List</title>
+<title>Beer List</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0"/>
 
-  <link href="http://beer.aaronwalton.org/apple-touch-icon.png" rel="icon" type="image/x-icon"/>
-  <link rel="stylesheet" href="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.css" />
-  <link rel="stylesheet" href="css/styles.css" />
+<link rel="stylesheet" href="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.css" />
+<link rel="stylesheet" href="css/styles.css" />
 </head>
 
 <body>
-
 <div data-role="page" id="Beers" class="ui-body ui-body-a">
     <div data-role="header">
         <a href="#About" data-icon="info">About</a>
@@ -18,7 +16,7 @@
         <a href="#addit" data-icon="plus">Add</a>
     </div>
     <div data-role="content">
-         <ul id="beerList" data-role="listview" data-filter="true"></ul>
+         <ul id="beerAll" data-role="listview" data-filter="true"></ul>
     </div>
   <footer data-role="footer" data-position="fixed" data-id="myfooter">
      <nav data-role="navbar" data-iconpos="left">
@@ -27,8 +25,8 @@
            <li><a href="#Cellar">Cellar</a></li>
            <li><a href="#Deep">Deep</a></li>
            <li><a href="#Last100">100</a></li>
-           <li><a href="lists.php" data-icon="bars">Lists</a></li>
-       </lu></nav></footer>
+           <li><a href="#Lists" data-icon="bars">Lists</a></li>
+       </ul></nav></footer>
 </div>
 
 <div data-role="page" id="Deep" class="ui-body ui-body-a">
@@ -47,8 +45,8 @@
            <li><a href="#Cellar">Cellar</a></li>
            <li><a href="#Deep" class="ui-btn-persist">Deep</a></li>
            <li><a href="#Last100">100</a></li>
-           <li><a href="lists.php" data-icon="bars">Lists</a></li>
-       </lu></nav></footer>
+           <li><a href="#Lists" data-icon="bars">Lists</a></li>
+       </ul></nav></footer>
 </div>
 
 <div data-role="page" id="Cellar" class="ui-body ui-body-a">
@@ -67,8 +65,8 @@
            <li><a href="#Cellar" class="ui-btn-active ui-btn-persist">Cellar</a></li>
            <li><a href="#Deep">Deep</a></li>
            <li><a href="#Last100">100</a></li>
-           <li><a href="lists.php" data-icon="bars">Lists</a></li>
-       </lu></nav></footer>
+           <li><a href="#Lists" data-icon="bars">Lists</a></li>
+       </ul></nav></footer>
 </div>
 
 <div data-role="page" id="Last100" class="ui-body ui-body-a">
@@ -87,8 +85,28 @@
            <li><a href="#Cellar">Cellar</a></li>
            <li><a href="#Deep">Deep</a></li>
            <li><a href="#Last100" class="ui-btn-persist">100</a></li>
-           <li><a href="lists.php" data-icon="bars">Lists</a></li>
-       </lu></nav></footer>
+           <li><a href="#Lists" data-icon="bars">Lists</a></li>
+       </ul></nav></footer>
+</div>
+
+<div data-role="page" id="Lists" class="ui-body ui-body-a">
+    <div data-role="header">
+        <a href="#About" data-icon="info">About</a>
+        <h1>Lists</h1>
+        <a href="#addit" data-icon="plus">Add</a>
+    </div>
+    <div data-role="content">
+         <ul id="beerLists" data-role="listview" data-filter="true"></ul>
+    </div>
+  <footer data-role="footer" data-position="fixed" data-id="myfooter">
+     <nav data-role="navbar" data-iconpos="left">
+        <ul>
+           <li><a href="#Beers">All</a></li>
+           <li><a href="#Cellar">Cellar</a></li>
+           <li><a href="#Deep">Deep</a></li>
+           <li><a href="#Last100" class="ui-btn-persist">100</a></li>
+           <li><a href="#Lists" data-icon="bars">Lists</a></li>
+       </ul></nav></footer>
 </div>
 
 <div data-role="page" id="About" class="">
@@ -96,7 +114,7 @@
       <h1>About My Beers</h1>
     </div>
     <div data-role="content">
-      <p><img src="http://aaronwalton.org/iui/iui/iui-logo-touch-icon.png"/>&nbsp;<img src="apple-touch-icon.png"/></p>
+      <p><img src="apple-touch-icon.png"/></p>
       <p>beer Web App using the jQuery Mobile JavaScript Library</p>
       <table><tr><td>Color key:
 	<br>&nbsp;&nbsp;<font color=green>Green</font> at Home
@@ -117,11 +135,13 @@
 
 <script src="http://code.jquery.com/jquery-1.11.1.min.js"></script>
 <script src="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.js"></script>
-<script src="js/beerlist.js"></script>
+<script src="js/alllist.js"></script>
 <script src="js/cellarlist.js"></script>
 <script src="js/deeplist.js"></script>
 <script src="js/lastlist.js"></script>
 <script src="js/beerdetails.js"></script>
+<script src="js/listslist.js"></script>
+<script src="js/listlist.js"></script>
 <!-- <script src="js/reportlist.js"></script> -->
 
 </body>
