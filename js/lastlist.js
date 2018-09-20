@@ -7,7 +7,7 @@ $('#Last100').bind('pageinit', function(event) {
 });
 
 function getLastList() {
-        console.log('#Last100 - getLastList()')
+        console.log('#Last100 - getLastList()');
 	    $.getJSON(serviceURL + 'getlast.php', function(data) {
 		$('#beerLast li').remove();
 		beers = data.items;

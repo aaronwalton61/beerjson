@@ -12,23 +12,30 @@ function displayBeer(data) {
 
     $('#beerPic').attr('src', 'images/hooters.png');
     $('#beerName').text(beer.Name);
-    $('#beerCharacter').text(beer.Characteristics);
+    $('#beerCharacter').text('Beer Characteristics ' + beer.Characteristics);
     if (beer.cellared > 0) {
-       $('#beerCellared').text(beer.cellared);
-       $('#beerCellar').text(beer.CellarServing);
-       $('#beerCellarDate').text(beer.CellarDate);
+       $('#beerCellared').text('There are ' + beer.cellared + ' beers cellared');
+       $('#beerCellar').text('This beer is cellared in ' + beer.CellarServing);
+       $('#beerCellarDate').text('This beer was cellared on ' + beer.CellarDate);
+       $('#beerCellar').text('This beer is cellared in ' + beer.CellarServing);
     }
+    $('#Extended').text('This beer can be Cellared');
     if (beer.BeerAdvocate) {
        $('#actionList').append('<li><a href="' + beer.BeerAdvocate + '"><h3>Beer Advocate</h3>' +
 				'</a></li>');
     }
+    if (beer.photo_id > 0) {
+        $('#actionList').append('<li>Photo_Id</h3> is ' + beer.photo_id + '</li>');
+    }
     $('#actionList').listview('refresh');
+    $('#textarea').text(beer.Notes);
 }
 
 function displayServings(data) {
     var servings = data.items;
     console.log(servings);
 
+    $('#servings').text(servings.length)
     $.each(servings, function(index, serving) {
        $('#swipeList').append('<li><a href="viewedit.html?id=' + serving.id + '"><h3>' + serving.Date + 
                                 ' ' + serving.Serving + ' ' + serving.List + 
