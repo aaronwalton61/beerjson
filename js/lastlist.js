@@ -7,17 +7,17 @@ $('#Last100').bind('pageinit', function(event) {
 });
 
 function getLastList() {
-        console.log('#Last100 - getLastList()');
-	    $.getJSON(serviceURL + 'getlast.php', function(data) {
+    console.log('#Last100 - getLastList()');
+	  $.getJSON(serviceURL + 'getlast.php', function(data) {
 		$('#beerLast li').remove();
 		beers = data.items;
+		console.log(beers);
 		$.each(beers, function(index, beer) {
 			$('#beerLast').append('<li><a href="beerdetails.html?id=' + beer.beer_id + '">' +
-					'<img src="images/bottle.png"/>' +
-					'<h4>' + beer.Name + '</h4><p> cellared on: ' + beer.CellarDate +
-                                        ' in ' + beer.CellarServing +
-					' ' + beer.BeerAdvocate + '</p>' +
-					'<span class="ui-li-count">' + beer.cellared + '</span></a></li>');
+			+ '<img src="images/bottle.png"/>' + '<h4>' + beer.Name + '</h4><span class="ui-li-aside">'
+			+ icons(beer.Characteristics + ' ' + beer.CellarServing) + icon + '</span><p>'
+			+ beer.cellared + ' cellared on: ' + beer.CellarDate + ' in ' + beer.CellarServing
+			+	' ' + beer.BeerAdvocate + '</p>' + '<span class="ui-li-count">' + beer.cellared + '</span></a></li>');
 		});
 		$('#beerLast').listview('refresh');
 	});

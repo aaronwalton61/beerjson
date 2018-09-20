@@ -12,12 +12,11 @@ function getAllList() {
 		$('#beerAll li').remove();
 		beers = data.items;
 		$.each(beers, function(index, beer) {
-			$('#beerAll').append('<li><a href="beerdetails.html?id=' + beer.beer_id + '">' +
-					'<img src="images/hooters.png"/>' +
-					'<h4>' + beer.Name + '</h4><p> cellared on: ' + beer.CellarDate +
-                                        ' in ' + beer.CellarServing +
-					' ' + beer.BeerAdvocate + '</p>' +
-					'<span class="ui-li-count">' + beer.cellared + '</span></a></li>');
+			$('#beerAll').append('<li><a href="beerdetails.html?id=' + beer.beer_id + '">'
+				+ '<img src="images/bottle.png"/>' + '<h4>' + beer.Name + '</h4><span class="ui-li-aside">' 
+				+ icons(beer.Characteristics + ' ' + beer.CellarServing) + icon + '</span><p>'
+				+ beer.cellared + ' cellared on: ' + beer.CellarDate + ' in ' + beer.CellarServing
+				+	' ' + beer.BeerAdvocate + '</p>' + '<span class="ui-li-count">' + beer.cellared + '</span></a></li>');
 		});
 		$('#beerAll').listview('refresh');
 	});
