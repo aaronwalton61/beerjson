@@ -12,12 +12,11 @@ function displayBeer(data) {
 
     $('#beerPic').attr('src', 'images/hooters.png');
     $('#beerName').text(beer.Name);
-    $('#beerCharacter').text('Beer Characteristics ' + beer.Characteristics);
+    $('#beerCharacter').append(icons(beer.Characteristics + ' ' + beer.CellarServing));
     if (beer.cellared > 0) {
        $('#beerCellared').text('There are ' + beer.cellared + ' beers cellared');
-       $('#beerCellar').text('This beer is cellared in ' + beer.CellarServing);
        $('#beerCellarDate').text('This beer was cellared on ' + beer.CellarDate);
-       $('#beerCellar').text('This beer is cellared in ' + beer.CellarServing);
+       $('#beerServ').text('This beer is cellared in ' + beer.CellarServing);
     }
     $('#Extended').text('This beer can be Cellared');
     if (beer.BeerAdvocate) {
@@ -29,6 +28,7 @@ function displayBeer(data) {
     }
     $('#actionList').listview('refresh');
     $('#textarea').text(beer.Notes);
+    $('#textarea').textinput('refresh');
 }
 
 function displayServings(data) {
@@ -38,8 +38,7 @@ function displayServings(data) {
     $('#servings').text(servings.length)
     $.each(servings, function(index, serving) {
        $('#swipeList').append('<li><a href="viewedit.html?id=' + serving.id + '"><h3>' + serving.Date + 
-                                ' ' + serving.Serving + ' ' + serving.List + 
-                                ' ' + serving.Location + '</h3></a></li>');
+                                ' ' + serving.Location + icons(serving.Serving) + '</h3></a></li>');
     });
     $('#swipeList').listview('refresh');
 }

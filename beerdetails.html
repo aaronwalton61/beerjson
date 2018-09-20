@@ -17,7 +17,7 @@
            <p id="beerCharacter"></p>
            <p id="beerCellared"></p>
            <p id="beerCellarDate"></p>
-           <p id="beerCellar"></p>
+           <p id="beerServ"></p>
            <p id="beerPhoto"></p>
            <p id="beerDeep"></p>
            <p id="beerCellarDate"></p>
@@ -29,9 +29,15 @@
         </div>
 
     <ul id="actionList" data-role="listview" data-inset="true"></ul>
+    <fieldset>
+        <div data-role="fieldcontain">
+        <label for="checkbox-based-flipswitch">HighGrav:</label>
+        <input type="checkbox" id="checkbox-based-flipswitch" data-role="flipswitch" onText="Yes" offText="No">
+        </div>
+    </fieldset>
     <div class="ui-field-contain">
     <label for="textarea">Notes:</label>
-        <textarea name="textarea" id="textarea"></textarea>
+        <textarea name="textarea" id="textarea" data-autogrow="true"></textarea>
     </div>
   </div>
 </div>
