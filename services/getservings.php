@@ -4,16 +4,16 @@ include 'config.php';
 $sql = "SELECT * FROM BeerServings b WHERE b.beer_id=:id";
 
 try {
-	$dbh = new PDO("mysql:host=$dbhost;dbname=$dbname", $dbuser, $dbpass);	
+	$dbh = new PDO("mysql:host=$dbhost;dbname=$dbname", $dbuser, $dbpass);
 	$dbh->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-	$stmt = $dbh->prepare($sql);  
+	$stmt = $dbh->prepare($sql);
 	$stmt->bindParam("id", $_GET[id]);
 	$stmt->execute();
-	$servings = $stmt->fetchAll(PDO::FETCH_OBJ);  
+	$data = $stmt->fetchAll(PDO::FETCH_OBJ);
 	$dbh = null;
-	echo '{"items":'. json_encode($servings) .'}'; 
+	echo '{"items":'. json_encode($data) .'}';
 } catch(PDOException $e) {
-	echo '{"error":{"text":'. $e->getMessage() .'}}'; 
+	echo '{"error":{"text":'. $e->getMessage() .'}}';
 }
 
 ?>

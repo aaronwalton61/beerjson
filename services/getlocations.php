@@ -1,7 +1,7 @@
 <?php
 include 'config.php';
 
-$sql = "SELECT * FROM Beer WHERE Beer.cellared > 0 AND Beer.ExtendedCellar < 1 ORDER BY Beer.CellarDate";
+$sql = "SELECT * FROM BeerLocations";
 
 try {
 	$dbh = new PDO("mysql:host=$dbhost;dbname=$dbname", $dbuser, $dbpass);
@@ -9,7 +9,7 @@ try {
 	$stmt = $dbh->query($sql);
 	$data= $stmt->fetchAll(PDO::FETCH_OBJ);
 	$dbh = null;
-	echo '{"items":'. json_encode($data) .'}';
+	echo '{"items":'. json_encode(data) .'}';
 } catch(PDOException $e) {
 	echo '{"error":{"text":'. $e->getMessage() .'}}';
 }
