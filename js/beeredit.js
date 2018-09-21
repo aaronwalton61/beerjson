@@ -14,8 +14,8 @@ function displayBeer(data) {
     $('#beerName').text(beer.Name);
     $('#beerCharacter').append(icons(beer.Characteristics + ' ' + beer.CellarServing));
     if (beer.cellared > 0) {
-       $('#beerCellared').text('There are ' + beer.cellared + ' beers cellared');
-       $('#beerCellarDate').text('This beer was cellared on ' + beer.CellarDate);
+       $('#beerCellared').text(beer.cellared);
+       $('#beerCellarDate').text(beer.CellarDate);
        $('#beerServ').text('This beer is cellared in ' + beer.CellarServing);
     }
 		if (beer.ExtendedCellar == "1")
@@ -46,6 +46,12 @@ function displayServings(data) {
           ' ' + serving.Location + icons(serving.Serving) + '</h3></a></li>');
     });
     $('#swipeList').listview('refresh');
+}
+
+function displayLocations(data) {
+  var locations = data.items;
+  console.log(locations);
+
 }
 
 function getUrlVars() {
