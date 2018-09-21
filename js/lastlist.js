@@ -13,6 +13,10 @@ function getLastList() {
 		beers = data.items;
 		console.log(beers);
 		$.each(beers, function(index, beer) {
+			if ( beer.photo_id != "1" )
+          icon = "<img title='Photo' src='images/Photo.png'>";
+      if ( beer.BeerAdvocate !== "" && beer.BeerAdvocate !== null )
+          icon = icon + "<img title='BA' src='images/BeerAdvocate.gif'>";
 			$('#beerLast').append('<li><a href="beerdetails.html?id=' + beer.beer_id + '">' +
 			+ '<img src="images/bottle.png"/>' + '<h4>' + beer.Name + '</h4><span class="ui-li-aside">'
 			+ icons(beer.Characteristics + ' ' + beer.CellarServing) + icon + '</span><p>'
