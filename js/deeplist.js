@@ -7,7 +7,8 @@ $('#Deep').bind('pageinit', function(event) {
 });
 
 function getbeerDeep() {
-    console.log('@Deep - getbeerDeep()');
+	var icon;
+	console.log('@Deep - getbeerDeep()');
 	$.getJSON(serviceURL + 'getdeep.php', function(data) {
 		$('#beerDeep li').remove();
 		beers = data.items;
