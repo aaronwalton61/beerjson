@@ -9,7 +9,7 @@ try {
 	$stmt = $dbh->query($sql);
 	$data= $stmt->fetchAll(PDO::FETCH_OBJ);
 	$dbh = null;
-	echo '{"items":'. json_encode(data) .'}';
+	echo '{"items":'. json_encode($data) .'}';
 } catch(PDOException $e) {
 	echo '{"error":{"text":'. $e->getMessage() .'}}';
 }
