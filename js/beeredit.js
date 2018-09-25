@@ -14,27 +14,24 @@ function displayBeer(data) {
 	console.log(beer);
 
 	$('#beerPic').attr('src', 'images/hooters.png');
-	$('#beerid').text(beer.beer_id);
-	$('#beerid').textinput('refresh');
-	$('#beerName').text(beer.Name);
-	$('#beerName').textinput('refresh');
-	$('#beerURL').text(beer.BeerAdvocate);
-	$('#beerURL').textinput('refresh');
-	$('#beerCharacter').text(beer.Characteristics);
-	$('#beerCharacter').textinput('refresh');
-	$('#beerCellared').text(beer.cellared);
-	$('#beerCellared').textinput('refresh');
-	$('#beerCellarDate').text(beer.CellarDate);
+	$('#beerid').val(beer.beer_id);
+	$('#beerName').val(beer.Name);
+	$('#beerURL').val(beer.BeerAdvocate);
+	$('#beerCharacter').val(beer.Characteristics);
+	$('#beerCellared').val(beer.cellared);
+	$('#beerCellarDate').val(beer.CellarDate);
+	$('#beerPhoto').val(beer.photo_id)
 
-	// if (beer.ExtendedCellar == "1")
-	// 	$('#flipswitch-HighGrav').prop("checked") = true;
-	// else
-	// 	$('#flipswitch-HighGrav').prop("checked") = false;
-
+ 	if (beer.ExtendedCellar == "1")
+	 	$('#flipswitch-HighGrav').prop("checked", true);
+ 	else
+	 	$('#flipswitch-HighGrav').prop("checked", false);
 	$('#flipswitch-HighGrav').flipswitch('refresh');
 
-	$('#notes').text(beer.Notes);
+	$('#notes').val(beer.Notes);
 	$('#notes').textinput('refresh');
+	$('#CellarServing').val(beer.CellarServing);
+	$('#CellarServing').select('refresh');
 }
 
 // function displayServings(data) {
@@ -73,7 +70,6 @@ function displayServingTypes(data) {
 	$.each(servingtypes, function(index, servingtype) {
 		$('#serving').append('<option value="' + servingtype.Name + '">' + servingtype.Name + '</option>');
 	});
-	$('#serving').refresh();
 }
 
 function getUrlVars() {
