@@ -6,6 +6,10 @@ $(document).on('pageshow', '#detailsPage', function(event) {
 	$.getJSON(serviceURL + 'getservings.php?id='+id, displayServings);
 });
 
+function detailsPage(id) {
+
+}
+
 function displayBeer(data) {
 	var beer = data.item;
 	console.log(beer);
@@ -34,7 +38,8 @@ function displayServings(data) {
     $('#servings').text(servings.length)
     $.each(servings, function(index, serving) {
        $('#swipeList').append('<li><a href="beeredit.html?serving=' + serving.id + '">' + serving.Date +
-          ' ' + serving.Location +'<span class="ui-li-aside">'+ icons(serving.Serving) + '</span></a><a href="edit.php?serving='+serving.id+'">Edit Serving</a></li>');
+          ' ' + serving.Location +'<span class="ui-li-aside">'+ icons(serving.Serving)
+		  + '</span></a><a href="edit.php?serving='+serving.id+'">Edit Serving</a><a href='#' class='delete'>Delete</a></li>');
     });
     $('#swipeList').listview('refresh');
 }

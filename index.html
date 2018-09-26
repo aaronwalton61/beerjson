@@ -6,6 +6,7 @@
 
 <link rel="stylesheet" href="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.css" />
 <link rel="stylesheet" href="css/styles.css" />
+<link rel="stylesheet" href="css/swipe.css" />
 </head>
 
 <body>
@@ -76,7 +77,7 @@
         <a href="#addit" data-icon="plus">Add</a>
     </div>
     <div data-role="content">
-         <ul id="beerLast" data-role="listview" data-filter="true"></ul>
+         <ul id="beerLast" data-role="listview" data-filter="true"  data-split-icon="delete"></ul>
     </div>
   <footer data-role="footer" data-position="fixed" data-id="myfooter">
      <nav data-role="navbar" data-iconpos="left">
@@ -107,87 +108,6 @@
            <li><a href="#Last100" class="ui-btn-persist">100</a></li>
            <li><a href="#Lists" data-icon="bars">Lists</a></li>
        </ul></nav></footer>
-</div>
-
-<div data-role="page" id="detailsPage" data-add-back-btn="true">
-    <div data-role="panel" id="mypanel" data-position="right" data-display="overlay">
-        <!-- panel content goes here -->
-        <img src="getphoto.php?id='photo_id'" width=250 />
-    </div><!-- /panel -->
-    <div data-role="header">
-        <a href="#About" data-icon="info">About</a>
-        <h1>Beer Details</h1>
-        <a href="#addit" data-icon="plus">Add</a>
-    </div>
-    <div data-role="content">
-        <ul id='details' title='Beer Details' data-role='listview' data-split-icon='info' data-split-theme='a' data-inset='true'>
-            <li><a id="BeerName" href="BEEREDIT.HTML">BeerName<span class="ui-li-aside"><img src="images/BeerAdvocate.gif"></span></a><a id="BeerAdvocate" href="BEERADVOCATE.HTML" target="_new">Beer Advocate</a></li>
-            <li><a id="BeerPhoto" href="#mypanel">Photo (id=)</a></li>
-            <li data-role="listdivider">Cellar</li>
-            <li data-icon="plus"><a id="CellarServ" href="ADDSERVING.HTML">beer.cellared beer(s) cellared beer.CellarDate</a><a id="AddServ" href="ADDSERV.HTML">Add Serving</a></li>
-            <li data-icon="plus"><a id="AddServ" href="ADDSERVING.HTML">Add Serving</a></li>
-            <div data-role="collapsible" data-theme="b" data-content-theme="c">
-                <h2>Beer Servings <span id="servings"></span></h2>
-                <ul id="swipeList" data-role="listview" data-split-icon="gear" data-split-theme="a" data-inset="true">
-                </ul>
-            </div>
-            <label for="notes">Notes:</label>
-            <textarea name="notes" id="notes" data-autogrow="true"></textarea>
-        </ul>
-    </div>
-</div>
-
-<div data-role="page" id="editPage" class="ui-body ui-body-a">
-    <div data-role="header">
-        <h1>Edit Beer</h1>
-    </div>
-    <div data-role="content">
-        <form id="edit" title="Edit Beer" action="modify.php" method="POST">
-            <button type="submit" data-theme="e">Modify</button>
-            <input id="beerid" type=hidden name="beerid" value="" />
-            <div data-role="fieldcontain">
-                <label for="beerName">Beer:</label>
-                <input id="beerName" type="text" name="beerName" value="" data-clear-bin="true" />
-            </div>
-            <div data-role="fieldcontain">
-                <label for="beerURL">URL:</label>
-                <input id="beerURL" type="url" name="beerURL" value="" data-clear-bin="true" />
-            </div>
-            <div data-role="fieldcontain">
-                <label for="beerCharacter">Character:</label>
-                <input id="beerCharacter" type="text" name="beerCharacter" value="" />
-            </div>
-            <div data-role="fieldcontain">
-                <label for="beerCellared">Cellar:</label>
-                <input id="beerCellared" type="number"  pattern="[0-9]*" name="beerCellared" value="" />
-            </div>
-            <div data-role="fieldcontain">
-                <label for="beerCellarDate">Date:</label>
-                <input id="beerCellarDate" type="date" name="beerCellarDate" value="" />
-            </div>
-            <div data-role="fieldcontain">
-                <label for="serving">Serving:</label>
-                <select name="serving" id="serving" title="Serving Type" size="1" data-mini="true">
-                    <option value=''>None</option>
-                </select>
-            </div>
-            <div data-role="fieldcontain">
-                <label for="beerPhoto">Photo:</label>
-                <input id="beerPhoto" type="number" name="beerPhoto" value="" />
-            </div>
-            <div data-role="fieldcontain">
-                <label for="flipswitch-HighGrav">HighGrav:</label>
-                <input type="checkbox" id="flipswitch-HighGrav" data-role="flipswitch" data-on-text="Yes" data-off-text="No" data-mini="true">
-            </div>
-            <div data-role="fieldcontain">
-                <label for="notes">Notes:</label>
-                <textarea id="notes" name="notes" data-autogrow="true"></textarea>
-            </div>
-            <div data-role="fieldcontain">
-                <a href="delete.php?beer=<?php echo $beerid;?>" data-role="button" data-icon="delete" data-inline="true" data-theme="e" data-mini="true">Delete Beer</a>
-            </div>
-        </form>
-    </div>
 </div>
 
 <div data-role="page" id="About" class="">
@@ -225,6 +145,7 @@
 <script src="js/beeredit.js"></script>
 <script src="js/listslist.js"></script>
 <!-- <script src="js/reportlist.js"></script> -->
+<script src="js/swipe.js"></script>
 
 </body>
 </html>
