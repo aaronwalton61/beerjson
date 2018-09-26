@@ -1,53 +1,55 @@
 <div data-role="page" id="editPage" class="ui-body ui-body-a">
-  <div data-role="header">
-    <h1>Edit Beer</h1>
-  </div>
-  <div data-role="content">
-    <form id="edit" title="Edit Beer" action="modify.php" method="POST">
-      <button type="submit" data-theme="e">Modify</button>
-      <input id="beerid" type=hidden name="beerid" value="" />
-      <div data-role="fieldcontain">
-        <label for="beerName">Beer:</label>
-        <input id="beerName" type="text" name="beerName" value="" data-clear-bin="true" />
-      </div>
-      <div data-role="fieldcontain">
-        <label for="beerURL">URL:</label>
-        <input id="beerURL" type="url" name="beerURL" value="" data-clear-bin="true" />
-      </div>
-      <div data-role="fieldcontain">
-        <label for="beerCharacter">Character:</label>
-        <input id="beerCharacter" type="text" name="beerCharacter" value="" />
-      </div>
-      <div data-role="fieldcontain">
-        <label for="beerCellared">Cellar:</label>
-        <input id="beerCellared" type="number"  pattern="[0-9]*" name="beerCellared" value="" />
-      </div>
-      <div data-role="fieldcontain">
-        <label for="beerCellarDate">Date:</label>
-        <input id="beerCellarDate" type="date" name="beerCellarDate" value="" />
-      </div>
-      <div data-role="fieldcontain">
-        <label for="serving">Serving:</label>
-        <select name="serving" id="serving" title="Serving Type" size="1" data-mini="true">
-          <option value=''>None</option>
-        </select>
-      </div>
-      <div data-role="fieldcontain">
-        <label for="beerPhoto">Photo:</label>
-        <input id="beerPhoto" type="number" name="beerPhoto" value="" />
-      </div>
-      <div data-role="fieldcontain">
-        <label for="flipswitch-HighGrav">HighGrav:</label>
-        <input type="checkbox" id="flipswitch-HighGrav" data-role="flipswitch" data-on-text="Yes" data-off-text="No" data-mini="true">
-      </div>
-      <div data-role="fieldcontain">
-        <label for="notes">Notes:</label>
-        <textarea id="notes" name="notes" data-autogrow="true"></textarea>
-      </div>
-      <div data-role="fieldcontain">
-        <a href="delete.php?beer=<?php echo $beerid;?>" data-role="button" data-icon="delete" data-inline="true" data-theme="e" data-mini="true">Delete Beer</a>
-      </div>
-    </form>
+    <div data-role="header">
+        <h1>Edit Beer</h1>
+    </div>
+    <div data-role="content">
+        <form id="edit" title="Edit Beer" action="modify.php" method="POST">
+            <button type="submit" data-theme="e">Modify</button>
+            <input id="beerid" type=hidden name="beerid" value="" />
+            <div data-role="fieldcontain">
+                <label for="beerName">Beer:</label>
+                <input id="beerName" type="text" name="beerName" value="" data-clear-bin="true" />
+            </div>
+            <div data-role="fieldcontain">
+                <label for="beerURL">URL:</label>
+                <input id="beerURL" type="url" name="beerURL" value="" data-clear-bin="true" />
+            </div>
+            <div data-role="fieldcontain">
+                <label for="beerCharacter">Character:</label>
+                <input id="beerCharacter" type="text" name="beerCharacter" value="" />
+            </div>
+            <div data-role="fieldcontain">
+                <label for="beerCellared">Cellar:</label>
+                <input id="beerCellared" type="number"  pattern="[0-9]*" name="beerCellared" value="" />
+            </div>
+            <div data-role="fieldcontain">
+                <label for="beerCellarDate">Date:</label>
+                <input id="beerCellarDate" type="date" name="beerCellarDate" value="" />
+            </div>
+            <div data-role="fieldcontain">
+                <label for="serving">Serving:</label>
+                <select name="serving" id="serving" title="Serving Type" size="1" data-mini="true">
+                    <option value=''>None</option>
+                </select>
+            </div>
+            <div data-role="fieldcontain">
+                <label for="beerPhoto">Photo:</label>
+                <input id="beerPhoto" type="number" name="beerPhoto" value="" />
+            </div>
+            <div data-role="fieldcontain">
+                <label for="flipswitch-HighGrav">HighGrav:</label>
+                <input type="checkbox" id="flipswitch-HighGrav" data-role="flipswitch" data-on-text="Yes" data-off-text="No" data-mini="true">
+            </div>
+            <div data-role="fieldcontain">
+                <label for="notes">Notes:</label>
+                <textarea id="notes" name="notes" data-autogrow="true"></textarea>
+            </div>
+            <div data-role="fieldcontain">
+                <a href="delete.php?beer=<?php echo $beerid;?>" data-role="button" data-icon="delete" data-inline="true" data-theme="e" data-mini="true">Delete Beer</a>
+            </div>
+        </form>
+    </div>
+</div>
 
 <!--  <div data-role="page" id="editserve" class="ui-body ui-body-a">
     <div data-role="header">
