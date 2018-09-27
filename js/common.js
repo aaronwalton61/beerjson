@@ -194,4 +194,5 @@ function ListLocation(list, location) {
     }
     var html_icon = "<img src='images\\" + icon +">";
 
+    return html_icon;
 }

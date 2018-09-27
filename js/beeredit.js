@@ -11,6 +11,7 @@ $(document).on('pageshow', '#editPage', function(event) {
 
 function editBeer(data) {
 	var beer = data.item;
+    console.log('Number of items in query: ' + beers.length);
 	console.log(beer);
 
 	$('#beerPic').attr('src', 'images/hooters.png');
@@ -65,7 +66,7 @@ function editBeer(data) {
 
 function displayServingTypes(data) {
 	var servingtypes = data.items;
-	console.log('displayServingTypes')
+	console.log('displayServingTypes (' + servingtypes.length + ')')
 	console.log(servingtypes);
 
 	$.each(servingtypes, function(index, servingtype) {

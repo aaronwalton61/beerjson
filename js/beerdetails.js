@@ -13,15 +13,14 @@ function detailsPage(id) {
 function displayBeer(data) {
 	var beer = data.item;
 	console.log(beer);
+    console.log('Number of items in query: ' + beer.length);
 
     $('#notes').val(beer.Notes);
-//    $('#notes').textinput('refresh');
+    $('#notes').textinput('refresh');
 
     //$('#details li').remove();
-    console.log($('a#BeerName').text());
     $('a#BeerName').text( beer.Name );
-    console.log($('a#BeerName').text());
-	$('#BeerName').attr('href', 'beeredit.html?id="' + beer.beerid);
+	$('#BeerName').attr('href', 'beeredit.html?id=' + beer.beer_id);
     $('#BeerAdvocate').attr('href', beer.BeerAdvocate);
 	$('a#BeerPhoto').text('Photo (id='+beer.photo_id+')');
 	// $('#details').append('<li data-role="listdivider">Cellar</li>');
@@ -35,13 +34,15 @@ function displayBeer(data) {
 
 function displayServings(data) {
     var servings = data.items;
+    console.log('Number of items:' + servings.length)
     console.log(servings);
 
     $('#servings').text(servings.length)
     $.each(servings, function(index, serving) {
-       $('#swipeList').append('<li><a href="beeredit.html?serving=' + serving.id + '">' + serving.Date +
-          ' ' + serving.Location +'<span class="ui-li-aside">'+ icons(serving.Serving)
-		  + '</span></a><a href="beeredit.html?serving='+serving.id+'">Edit Serving</a><a href="#" class="delete">Delete</a></li>');
+       $('#swipeList').append('<li><a href="beeredit.html?serving=' + serving.id + '">'
+            + serving.Date + ' ' + serving.Serving + '<span class="ui-li-aside">'
+            + ListLocation(serving.List, serving.Location) + icons(serving.Serving)
+            + '</span></a><a href="beeredit.html?serving=' + serving.id + '"></a></li>');
     });
     $('#swipeList').listview('refresh');
 }
