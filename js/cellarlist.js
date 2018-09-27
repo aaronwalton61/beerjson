@@ -12,7 +12,10 @@ function getCellarList() {
 	$.getJSON(serviceURL + 'getcellar.php', function(data) {
 		$('#beerCellar li').remove();
 		beers = data.items;
-		$.each(beers, function(index, beer) {
+        console.log('Number of items in query: ' + beers.length);
+		console.log(beers);
+        $.each(beers, function(index, beer) {
+            var icon = "";
 			if ( beer.photo_id != "1" )
 				icon = "<img title='Photo' src='images/Photo.png'>";
 			if ( beer.BeerAdvocate !== "" && beer.BeerAdvocate !== null )

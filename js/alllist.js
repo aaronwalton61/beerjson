@@ -11,6 +11,8 @@ function getAllList() {
 	$.getJSON(serviceURL + 'getbeers.php', function(data) {
 		$('#beerAll li').remove();
 		beers = data.items;
+        console.log('Number of items in query: ' + beers.length);
+		console.log(beers);
 		$.each(beers, function(index, beer) {
 			var icon ="";
 			if ( beer.photo_id != "1" )

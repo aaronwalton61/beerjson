@@ -128,7 +128,7 @@ function icons( fstr )
    return fgraf;
 }
 
-funtion ListLocation(list, location) {
+function ListLocation(list, location) {
     var icon;
     switch ( list )
     {
@@ -194,4 +194,5 @@ funtion ListLocation(list, location) {
     }
     var html_icon = "<img src='images\\" + icon +">";
 
+    return html_icon;
 }
