@@ -1,7 +1,7 @@
 <?php
 include 'config.php';
 
-$sql = "SELECT * FROM BeerServings b WHERE b.beer_id=:id";
+$sql = "SELECT * FROM BeerServings b WHERE b.beer_id=:serving";
 
 try {
 	$dbh = new PDO("mysql:host=$dbhost;dbname=$dbname", $dbuser, $dbpass);

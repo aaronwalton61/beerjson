@@ -11,9 +11,10 @@ function detailsPage(id) {
 }
 
 function displayBeer(data) {
+    console.log('(function)- displayBeer()');
 	var beer = data.item;
-	console.log(beer);
     console.log('Number of items in query: ' + beer.length);
+    console.log(beer);
 
     $('#notes').val(beer.Notes);
     $('#notes').textinput('refresh');
