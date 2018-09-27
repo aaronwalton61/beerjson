@@ -5,11 +5,11 @@ $(document).on('pageshow', '#editPage', function(event) {
 	//	$.getJSON(serviceURL + 'getlocations.php?id='+id, displayLocations);
 	//	$.getJSON(serviceURL + 'getlists.php?id='+id, displayLists);
 	$.getJSON(serviceURL + 'getservingtypes.php', displayServingTypes);
-	$.getJSON(serviceURL + 'getbeer.php?id='+id, displayBeer);
+	$.getJSON(serviceURL + 'getbeer.php?id='+id, editBeer);
 	//	$.getJSON(serviceURL + 'getservings.php?id='+id, displayServings);
 });
 
-function displayBeer(data) {
+function editBeer(data) {
 	var beer = data.item;
 	console.log(beer);
 

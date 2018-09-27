@@ -128,7 +128,7 @@ function icons( fstr )
    return fgraf;
 }
 
-funtion ListLocation(list, location) {
+function ListLocation(list, location) {
     var icon;
     switch ( list )
     {

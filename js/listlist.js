@@ -7,11 +7,12 @@ getbeerList();
 });
 */
 function getbeerList(listname) {
-   console.log(' - getbeerList('+listname+')');
+   console.log('#beerLists - getbeerList('+listname+')');
    $.getJSON(serviceURL + 'getlist.php?list=' + listname, function(data) {
       $('#beerLists li').remove();
       beers = data.items;
-
+      console.log('Number of items in query: ' + beers.length);
+      console.log(beers);
       $.each(beers, function(index, beer) {
           var icon ="";
         //   if ( beer.photo_id != "1" )

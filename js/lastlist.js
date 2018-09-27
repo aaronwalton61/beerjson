@@ -11,6 +11,7 @@ function getLastList() {
 	$.getJSON(serviceURL + 'getlast.php', function(data) {
 		$('#beerLast li').remove();
 		beers = data.items;
+        console.log('Number of items in query: ' + beers.length);
 		console.log(beers);
 		$.each(beers, function(index, beer) {
 			var icon ="";

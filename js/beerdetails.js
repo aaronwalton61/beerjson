@@ -18,16 +18,18 @@ function displayBeer(data) {
 //    $('#notes').textinput('refresh');
 
     //$('#details li').remove();
-    $('a#BeerName.ui-btn').text( beer.Name );
-	$('#BeerName.ui-btn').attr('href', 'beeredit.html?id="' + beer.beerid);
-    $('#BeerAdvocate.ui-btn').attr('href', beer.BeerAdvocate);
+    console.log($('a#BeerName').text());
+    $('a#BeerName').text( beer.Name );
+    console.log($('a#BeerName').text());
+	$('#BeerName').attr('href', 'beeredit.html?id="' + beer.beerid);
+    $('#BeerAdvocate').attr('href', beer.BeerAdvocate);
 	$('a#BeerPhoto').text('Photo (id='+beer.photo_id+')');
 	// $('#details').append('<li data-role="listdivider">Cellar</li>');
      if (beer.cellared > 0)
-	    $('#CellarServ.ui-btn').attr('href', 'addserv.html?beer='+beer.beerid+'&cellar=yes');
-        $('a#CellarServ.ui-btn').text(beer.cellared+' beer(s) cellared '+beer.CellarDate)
+	    $('#CellarServ').attr('href', 'addserv.html?beer='+beer.beerid+'&cellar=yes');
+        $('a#CellarServ').text(beer.cellared+' beer(s) cellared '+beer.CellarDate)
         //<a href="addserv.php?beer='+beer.beerid+'">Add Serving</a></li>');
-	$('a#AddServ.ui-btn').attr('href', 'addserv.html?beer=' + beer.beerid);
+	$('a#AddServ').attr('href', 'addserv.html?beer=' + beer.beerid);
 //    $('#details').listview('refresh');
 }
 
@@ -39,7 +41,7 @@ function displayServings(data) {
     $.each(servings, function(index, serving) {
        $('#swipeList').append('<li><a href="beeredit.html?serving=' + serving.id + '">' + serving.Date +
           ' ' + serving.Location +'<span class="ui-li-aside">'+ icons(serving.Serving)
-		  + '</span></a><a href="edit.php?serving='+serving.id+'">Edit Serving</a><a href='#' class='delete'>Delete</a></li>');
+		  + '</span></a><a href="beeredit.html?serving='+serving.id+'">Edit Serving</a><a href="#" class="delete">Delete</a></li>');
     });
     $('#swipeList').listview('refresh');
 }
