@@ -2,14 +2,21 @@ var serviceURL = "http://beertest.aaronwalton.org/services/";
 
 $(document).on('pageshow', '#editPage', function(event) {
 	var id = getUrlVars()["id"];
+    var serving = getUrlVars()["serving"];
 	//	$.getJSON(serviceURL + 'getlocations.php?id='+id, displayLocations);
 	//	$.getJSON(serviceURL + 'getlists.php?id='+id, displayLists);
-	$.getJSON(serviceURL + 'getservingtypes.php', displayServingTypes);
-	$.getJSON(serviceURL + 'getbeer.php?id='+id, editBeer);
-	//	$.getJSON(serviceURL + 'getservings.php?id='+id, displayServings);
+    //	$.getJSON(serviceURL + 'getservings.php?id='+id, displayServings);
+    if (id !== null) {
+	    $.getJSON(serviceURL + 'getservingtypes.php', displayServingTypes);
+	    $.getJSON(serviceURL + 'getbeer.php?id='+id, editBeer);
+    }
+    if (serving !== null) {
+
+    }
 });
 
 function editBeer(data) {
+    console.log('(function)* editBeer()')
 	var beer = data.item;
     console.log('Number of items in query: ' + beers.length);
 	console.log(beer);
@@ -31,9 +38,15 @@ function editBeer(data) {
 
 	$('#notes').val(beer.Notes);
 	$('#notes').textinput('refresh');
-	// below doesn't work setting the Serving in the SelectMenu
-	$('#CellarServing').children('option[value="'+ beer.CellarServing +'"]').attr('selected', true);
-	$('#CellarServing').select('refresh');
+	// below sets the <option> setting to the CellarServing but not the Serving in the Select
+	//$('#CellarServing').children('option[value="'+ beer.CellarServing +'"]').attr('selected', true); //sets internal
+    //$('#CellarServing option[value="'+beer.CellarServing+'"]').attr('selected', 'selected');//works internal
+    //$('#CellarServing option[value="'+beer.CellarServing+'"]').prop('selected', true);//works internal
+    //$('#CellarServing').val(beer.CellarServing); // works internal
+    $('#CellarServing').select('refresh');
+    $('#CellarServing').trigger('chosen:updated');
+    //$('#CellarServing').val(beer.CellarServing);
+    //$('#CellarServing > [value=' + beer.CellarServing + ']').attr('selected', 'true');
 }
 
 // function displayServings(data) {
@@ -65,8 +78,9 @@ function editBeer(data) {
 // }
 
 function displayServingTypes(data) {
+    console.log('(function)* displayServingTypes()')
 	var servingtypes = data.items;
-	console.log('displayServingTypes (' + servingtypes.length + ')')
+	console.log('Number of Items: ' + servingtypes.length)
 	console.log(servingtypes);
 
 	$.each(servingtypes, function(index, servingtype) {
