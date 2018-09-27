@@ -1,7 +1,7 @@
     <div id="detailsPage" data-role="page" data-add-back-btn="true">
-        <div data-role="panel" id="mypanel" data-position="right" data-display="overlay">
+        <div id="mypanel" data-role="panel" data-position="right" data-display="overlay">
             <!-- panel content goes here -->
-            <img src="getphoto.php?id='photo_id'" width=250 />
+            <img id="Photo" src="" width=250 />
         </div><!-- /panel -->
         <div data-role="header">
             <a href="#About" data-icon="info">About</a>
@@ -16,7 +16,7 @@
                 <li data-icon="plus"><a id="CellarServ" href="ADDSERVING.HTML">beer.cellared beer(s) cellared beer.CellarDate</a><a id="AddServ" href="ADDSERV.HTML">Add Serving</a></li>
                 <li data-icon="plus"><a id="AddServ" href="ADDSERVING.HTML">Add Serving</a></li>
                 <div data-role="collapsible" data-theme="b" data-content-theme="c">
-                    <h2>Beer Servings <span id="servings"></span></h2>
+                    <h2>Beer Servings <span id="numServings"></span></h2>
                     <ul id="swipeList" data-role="listview" data-split-icon="gear" data-split-theme="a" data-inset="true">
                     </ul>
                 </div>
