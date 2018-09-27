@@ -3,7 +3,8 @@ include 'config.php';
 
 $listname =  $_GET['list'];
 
-$sql = "SELECT * FROM dataervings WHERE List = '{$listname}' ORDER BY Date Desc";
+//$sql = "SELECT * FROM BeerServings WHERE List = '{$listname}' INNER JOIN Beer ON Beer.beer_id = BeerServings.beer_id ORDER BY Date Desc";
+$sql = "SELECT * FROM BeerServings WHERE List = '{$listname}' ORDER BY Date Desc";
 
 try {
 	$dbh = new PDO("mysql:host=$dbhost;dbname=$dbname", $dbuser, $dbpass);

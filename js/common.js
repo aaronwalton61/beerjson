@@ -127,3 +127,71 @@ function icons( fstr )
 
    return fgraf;
 }
+
+funtion ListLocation(list, location) {
+    var icon;
+    switch ( list )
+    {
+      case "Taco Mac I":
+        icon = "TM1.png' width=20";
+        break;
+      case "Taco Mac II":
+        icon = "TM2.png' width=20";
+        break;
+      case "TM Johns Creek":
+        icon = "TM3.png' width=20";
+        break;
+       case "Cummings":
+        icon = "TM4.png' width=20";
+        break;
+      case "Taco Mac River":
+        icon = "tm-r.png' width=20";
+        break;
+      case "Summits":
+        icon = "summits.png' width=20";
+        break;
+      case "McCray":
+        icon = "mccray.png' width=20";
+        break;
+      case "Mellow Mushroom":
+        icon = "shroom.png' width=30";
+        break;
+      case "WOB":
+        icon = "wob.jpg' width=50";
+        break;
+      default:
+        switch ( location )
+        {
+          case "Hooters":
+            icon = "hooters.png' width=20";
+            break;
+          case "Tilted Kilt":
+            icon = "tiltedkilt.png' width=20";
+            break;
+          case "Home":
+            icon = "house.png'";
+            break;
+          case "Beerfest":
+            icon = "beerfest.png'";
+            break;
+          case "Taco Mac":
+            icon = "tm-r.png' width=20";
+            break;
+          case "McCray":
+            icon = "mccray.png' width=20";
+            break;
+          case "Mellow Mushroom":
+            icon = "shroom.png' width=30";
+            break;
+          case "WOB":
+            icon = "wob.jpg' width=50";
+            break;
+         default:
+             icon = "what.png'";
+             break;
+        }
+        break;
+    }
+    var html_icon = "<img src='images\\" + icon +">";
+
+}

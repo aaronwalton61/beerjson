@@ -1,46 +1,63 @@
-<!DOCTYPE HTML>
-<html>
-<head>
-</head>
-
-<body>
-
-<div id="detailsPage" data-role="page" data-add-back-btn="true">
-   <div data-role="header">
-      <h1>Beer Details</h1>
-   </div>
-
-   <div data-role="content">
-  	<img id="beerPic"/>
-	<div id="beerDetails">
-           <h3 id="beerName"></h3>
-           <p id="beerCharacter"></p>
-           <p id="beerCellared"></p>
-           <p id="beerCellarDate"></p>
-           <p id="beerServ"></p>
-           <p id="beerPhoto"></p>
-           <p id="beerDeep"></p>
-           <p id="beerCellarDate"></p>
-   	</div>
-        <div data-role="collapsible" data-theme="b" data-content-theme="c">
-           <h2>Beer Servings <span id="servings"></span></h2>
-           <ul id="swipeList" data-role="listview" data-split-icon="gear" data-split-theme="a" data-inset="true"></ul>
-           <p></p>
+    <div id="detailsPage" data-role="page" data-add-back-btn="true">
+        <div data-role="panel" id="mypanel" data-position="right" data-display="overlay">
+            <!-- panel content goes here -->
+            <img src="getphoto.php?id='photo_id'" width=250 />
+        </div><!-- /panel -->
+        <div data-role="header">
+            <a href="#About" data-icon="info">About</a>
+            <h1>Beer Details</h1>
+            <a href="#addit" data-icon="plus">Add</a>
         </div>
-
-    <ul id="actionList" data-role="listview" data-inset="true"></ul>
-    <fieldset>
-        <div data-role="fieldcontain">
-        <label for="flipswitch-HighGrav">HighGrav:</label>
-        <input type="checkbox" id="flipswitch-HighGrav" data-role="flipswitch" data-on-text="Yes" data-off-text="No" data-mini="true">
+        <div data-role="content">
+            <ul id='details' title='Beer Details' data-role='listview' data-split-icon='info' data-split-theme='a' data-inset='true'>
+                <li><a id="BeerName" href="BEEREDIT.HTML">BeerName<span class="ui-li-aside"><img src="images/BeerAdvocate.gif"></span></a><a id="BeerAdvocate" href="BEERADVOCATE.HTML" target="_new">Beer Advocate</a></li>
+                <li><a id="BeerPhoto" href="#mypanel">Photo (id=)</a></li>
+                <li data-role="listdivider">Cellar</li>
+                <li data-icon="plus"><a id="CellarServ" href="ADDSERVING.HTML">beer.cellared beer(s) cellared beer.CellarDate</a><a id="AddServ" href="ADDSERV.HTML">Add Serving</a></li>
+                <li data-icon="plus"><a id="AddServ" href="ADDSERVING.HTML">Add Serving</a></li>
+                <div data-role="collapsible" data-theme="b" data-content-theme="c">
+                    <h2>Beer Servings <span id="servings"></span></h2>
+                    <ul id="swipeList" data-role="listview" data-split-icon="gear" data-split-theme="a" data-inset="true">
+                    </ul>
+                </div>
+                <label for="notes">Notes:</label>
+                <textarea name="notes" id="notes" data-autogrow="true"></textarea>
+            </ul>
         </div>
-    </fieldset>
-    <div class="ui-field-contain">
-    <label for="textarea">Notes:</label>
-        <textarea name="textarea" id="textarea" data-autogrow="true"></textarea>
     </div>
-  </div>
+
+    <!--
+    <li><a href="edit.php?beer="><span class='ui-li-aside'><img src="images/BeerAdvocate.gif"></span></a><a href="<?php echo $row['BeerAdvocate'];?>" target="_new">Beer Advocate</a></li>
+    <li><a href="#mypanel">Photo (id=<?php echo $row['photo_id']; ?>)</a></li>
+    <li data-role="listdivider">Cellar</li>
+    <li data-icon="plus"><a href="addserv.php?beer=<?php echo $beerid;?>&cellar=yes"></a><a href="addserv.php?beer=">Add Serving</a></li>
+
+    <li data-icon="plus"><a href="addserv.php?beer=">Add Serving</a></li>
+
+    /****servings**************************************************************************/
+    if ( $row['Date'] == '0000-00-00' )
+    echo "<li><a href='edit.php?serving={$row['id']}'>".$row['Date']." ".$row['Serving']." ".$row['Vintage']."<span class='ui-li-aside'> ".$html_icon."</span></a></li>";
+    else
+    echo "<li><a href='view.php?serving={$row['id']}'>".$row['Date']." ".$row['Serving']." ".$row['Vintage']."<span class='ui-li-aside'> ".$html_icon."</span></a><a href='edit.php?serving={$row['id']}'>Edit Serving</a></li>";
+}
+</ul></div>
+</div>
 </div>
 
-</body>
-</html>
+<div data-role="page" id="View" class="">
+<div data-role="header">
+<a href="#About" data-icon="info">About</a>
+<h1>View Serving</h1>
+<a href="#addit" data-icon="plus">Add</a>
+</div>
+<ul id='viewserv' title='View Serving' data-role='listview'>
+<li data-role="listdivider">Date & Serving</li>
+<li><?php echo $row['Name2']." ".$row['Date']." ".$row['Serving'];?></li>
+<li data-role="listdivider">Location & List</li>
+<li><?php echo $row['List']." // ".$row['Location']; ?><span class='ui-li-aside'><?php echo $html_icon;?></span></li>
+<li data-role="listdivider">Notes</li>
+<li><textarea name="review" readonly="readonly"><?php echo $row['Review'];?></textarea></li>
+<a href="edit.php?serving=<?php echo $row['id']?>" data-role="button">Edit Serving</a>
+</ul>
+</div>
+-->

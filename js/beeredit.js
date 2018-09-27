@@ -30,7 +30,8 @@ function displayBeer(data) {
 
 	$('#notes').val(beer.Notes);
 	$('#notes').textinput('refresh');
-	$('#CellarServing').val(beer.CellarServing);
+	// below doesn't work setting the Serving in the SelectMenu
+	$('#CellarServing').children('option[value="'+ beer.CellarServing +'"]').attr('selected', true);
 	$('#CellarServing').select('refresh');
 }
 
@@ -68,7 +69,7 @@ function displayServingTypes(data) {
 	console.log(servingtypes);
 
 	$.each(servingtypes, function(index, servingtype) {
-		$('#serving').append('<option value="' + servingtype.Name + '">' + servingtype.Name + '</option>');
+		$('#CellarServing').append('<option value="' + servingtype.Name + '">' + servingtype.Name + '</option>');
 	});
 }
 
