@@ -71,7 +71,6 @@ function editServing(data) {
     var serving = data.item;
     console.log('Number of items in query: ' + serving.length);
     console.log(serving);
-
 }
 
 // function displayServings(data) {
