@@ -1,4 +1,4 @@
-CellarServingCellarServingCellarServing<div data-role="page" id="editPage" class="ui-body ui-body-a">
+<div data-role="page" id="editPage" class="ui-body ui-body-a">
     <div data-role="header">
         <h1>Edit Beer</h1>
     </div>
@@ -10,34 +10,50 @@ CellarServingCellarServingCellarServing<div data-role="page" id="editPage" class
                 <label for="beerName">Beer:</label>
                 <input id="beerName" type="text" name="beerName" value="" data-clear-bin="true" />
             </div>
-            <div data-role="fieldcontain">
-                <label for="beerURL">URL:</label>
+            <div id="beerURL" data-role="fieldcontain">
+                <label id="beerURL" for="beerURL">URL:</label>
                 <input id="beerURL" type="url" name="beerURL" value="" data-clear-bin="true" />
             </div>
-            <div data-role="fieldcontain">
-                <label for="beerCharacter">Character:</label>
+            <div id="beerCharacter" data-role="fieldcontain">
+                <label id="beerCharacter" for="beerCharacter">Character:</label>
                 <input id="beerCharacter" type="text" name="beerCharacter" value="" />
             </div>
-            <div data-role="fieldcontain">
-                <label for="beerCellared">Cellar:</label>
+            <div id="beerCellared" data-role="fieldcontain">
+                <label id="beerCellared" for="beerCellared">Cellar:</label>
                 <input id="beerCellared" type="number"  pattern="[0-9]*" name="beerCellared" value="" />
             </div>
-            <div data-role="fieldcontain">
-                <label for="beerCellarDate">Date:</label>
+            <div id="beerCellarDate" data-role="fieldcontain">
+                <label id="beerCellarDate" for="beerCellarDate">Date:</label>
                 <input id="beerCellarDate" type="date" name="beerCellarDate" value="" />
             </div>
-            <div data-role="fieldcontain">
-                <label for="CellarServing">Serving:</label>
+            <div id="CellarServing" data-role="fieldcontain">
+                <label id="CellarServing" for="CellarServing">Serving:</label>
                 <select id="CellarServing" name="CellarServing" title="Serving Type" size="1" data-mini="true">
                     <option value=''>None</option>
                 </select>
             </div>
-            <div data-role="fieldcontain">
-                <label for="beerPhoto">Photo:</label>
+            <div id="vintage" data-role="fieldcontain">
+              <label id="vintage" for="name">Vintage:</label>
+              <input id="vintage" type=text name="vintage" value="" >
+            </div>
+            <fieldset id="Serving" data-role="controlgroup" data-type="horizontal">
+                <legend id="Serving" >Beer Serving, List & Location:</legend>
+                <label id="Serving" for="Serving">Serving:</label>
+                <select id="Serving" name="Serving" title="Serving Type" size="1" data-mini="true">
+                </select>
+                <label id="List" for="List">List:</label>
+                <select id="List" name="List" title="Beer List" size="1" data-mini="true">
+                </select>
+                <label id="Location" for="Location">Location:</label>
+                <select id="Location" name="location" title="Location" size="1" data-mini="true">
+                </select>
+            </fieldset>
+            <div id="beerPhoto" data-role="fieldcontain">
+                <label id="beerPhoto" for="beerPhoto">Photo:</label>
                 <input id="beerPhoto" type="number" name="beerPhoto" value="" />
             </div>
-            <div data-role="fieldcontain">
-                <label for="flipswitch-HighGrav">HighGrav:</label>
+            <div id="flipswitch-HighGrav" data-role="fieldcontain">
+                <label id="flipswitch-HighGrav" for="flipswitch-HighGrav">HighGrav:</label>
                 <input id="flipswitch-HighGrav" type="checkbox" data-role="flipswitch" data-on-text="Yes" data-off-text="No" data-mini="true">
             </div>
             <div data-role="fieldcontain">
