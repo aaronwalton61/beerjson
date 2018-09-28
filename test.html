@@ -7,31 +7,76 @@
 <link rel="stylesheet" href="css/styles.css" />
 </head>
 <body>
-    <div id="detailsPage" data-role="page" data-add-back-btn="true">
-        <div data-role="panel" id="mypanel" data-position="right" data-display="overlay">
-            <!-- panel content goes here -->
-<!--            <img src="getphoto.php?id='photo_id'" width=250 /> -->
-        </div><!-- /panel -->
+    <div data-role="page" id="editPage" class="ui-body ui-body-a">
         <div data-role="header">
-            <a href="#About" data-icon="info">About</a>
-            <h1>View Beer</h1>
-            <a href="#addit" data-icon="plus">Add</a>
+            <h1>Edit Beer</h1>
         </div>
         <div data-role="content">
-            <ul id='details' title='Beer Details' data-role='listview' data-split-icon='info' data-split-theme='a' data-inset='true'>
-                <li><a id="BeerName" href="BEEREDIT.HTML">BeerName<span class="ui-li-aside"><img src="images/BeerAdvocate.gif"></span></a><a id="BeerAdvocate" href="BeerAdvocate" target="_new">Beer Advocate</a></li>
-                <li><a id="BeerPhoto" href="#mypanel">Photo (id=)</a></li>
-                <li data-role="listdivider">Cellar</li>
-                <li data-icon="plus"><a id="CellarServ" href="ADDSERVING.HTML">beer.cellared beer(s) cellared beer.CellarDate</a><a id="AddServ" href="ADDSERV.HTML">Add Serving</a></li>
-                <li data-icon="plus"><a id="AddServ" href="ADDSERVING.HTML">Add Serving</a></li>
-                <div data-role="collapsible" data-theme="b" data-content-theme="c">
-                    <h2>Beer Servings <span id="servings"></span></h2>
-                    <ul id="swipeList" data-role="listview" data-split-icon="gear" data-split-theme="a" data-inset="true">
-                    </ul>
+            <form id="edit" title="Edit Beer">
+                <input type="submit" data-theme="e" value="Modify">
+                <input id="beerid" type=hidden name="beerid" value="" />
+                <div data-role="fieldcontain">
+                    <label for="beerName">Beer:</label>
+                    <input id="beerName" type="text" name="beerName" value="" data-clear-bin="true" />
                 </div>
-                <label for="notes">Notes:</label>
-                <li><textarea name="notes" id="notes" data-autogrow="true"></textarea></li>
-            </ul>
+                <div id="beerURL" data-role="fieldcontain">
+                    <label id="beerURL" for="beerURL">URL:</label>
+                    <input id="beerURL" type="url" name="beerURL" value="" data-clear-bin="true" />
+                </div>
+                <div id="beerCharacter" data-role="fieldcontain">
+                    <label id="beerCharacter" for="beerCharacter">Character:</label>
+                    <input id="beerCharacter" type="text" name="beerCharacter" value="" />
+                </div>
+                <div id="beerCellared" data-role="fieldcontain">
+                    <label id="beerCellared" for="beerCellared">Cellar:</label>
+                    <input id="beerCellared" type="number"  pattern="[0-9]*" name="beerCellared" value="" />
+                </div>
+                <div id="beerCellarDate" data-role="fieldcontain">
+                    <label id="beerCellarDate" for="beerCellarDate">Cellar Date:</label>
+                    <input id="beerCellarDate" type="date" name="beerCellarDate" value="" />
+                </div>
+                <div id="beerDrinkDate" data-role="fieldcontain">
+                    <label id="beerDrinkDate" for="beerDrinkDate">Drink Date:</label>
+                    <input id="beerDrinkDate" type="date" name="beerDrinkDate" value="" />
+                </div>
+                <div id="CellarServing" data-role="fieldcontain">
+                    <label id="CellarServing" for="CellarServing">Serving:</label>
+                    <select id="CellarServing" name="CellarServing" title="Serving Type" size="1" data-mini="true">
+                        <option value=''>None</option>
+                    </select>
+                </div>
+                <div id="vintage" data-role="fieldcontain">
+                  <label id="vintage" for="name">Vintage:</label>
+                  <input id="vintage" type=text name="vintage" value="" >
+                </div>
+                <fieldset id="Serving" data-role="controlgroup" data-type="horizontal">
+                    <legend id="Serving" >Beer Serving, List & Location:</legend>
+                    <label id="Serving" for="Serving">Serving:</label>
+                    <select id="Serving" name="Serving" title="Serving Type" size="1" data-mini="true">
+                    </select>
+                    <label id="List" for="List">List:</label>
+                    <select id="List" name="List" title="Beer List" size="1" data-mini="true">
+                    </select>
+                    <label id="Location" for="Location">Location:</label>
+                    <select id="Location" name="location" title="Location" size="1" data-mini="true">
+                    </select>
+                </fieldset>
+                <div id="beerPhoto" data-role="fieldcontain">
+                    <label id="beerPhoto" for="beerPhoto">Photo:</label>
+                    <input id="beerPhoto" type="number" name="beerPhoto" value="" />
+                </div>
+                <div id="flipswitch-HighGrav" data-role="fieldcontain">
+                    <label id="flipswitch-HighGrav" for="flipswitch-HighGrav">HighGrav:</label>
+                    <input id="flipswitch-HighGrav" type="checkbox" data-role="flipswitch" data-on-text="Yes" data-off-text="No" data-mini="true">
+                </div>
+                <div data-role="fieldcontain">
+                    <label for="notes">Notes:</label>
+                    <textarea id="notes" name="notes" data-autogrow="true"></textarea>
+                </div>
+                <div data-role="fieldcontain">
+                    <input id="delete" type="button" data-role="button" data-icon="delete" data-inline="true" data-theme="e" data-mini="true">Delete Beer</a>
+                </div>
+            </form>
         </div>
     </div>
 </body>
@@ -39,21 +84,25 @@
 <script src="http://code.jquery.com/jquery-1.11.1.min.js"></script>
 <script src="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.js"></script>
 <script>
+$("#beerURL").remove();
+$("#beerCharacter").remove();
+$("#beerCellared").remove();
+$("#CellarServing").remove();
+$("#beerPhoto").remove();
+$("flipswitch-HighGrav").remove();
+$('input#beerid').attr('name', 'serving')
 
 $('#notes').val('Notes go here');
 //$('#notes').textinput('refresh');
 
 //$('#details li').remove();
 $('a#BeerName').text( 'Big Bad Beer' );
-$('#BeerName').attr('href', 'beerEdit.html?id=beer.beerid');
-$('#BeerAdvocate').attr('href', 'http://BeerAdvocate');
-$('a#BeerPhoto').text('Photo (id=beer.photo_id)');
-// $('#details').append('<li data-role="listdivider">Cellar</li>');
- if (1 > 0)
-    $('#CellarServ').attr('href', 'addserv.php?beer=beer.beerid&cellar=yes');
-    $('a#CellarServ').text('**beer.cellared beer(s) cellared beer.CellarDate')
-    //<a href="addserv.php?beer='+beer.beerid+'">Add Serving</a></li>');
-$('a#AddServ').attr('href', 'addserv.php?beer=beer.beerid');
-//$('#details').listview('refresh');
+$('#CellarDate').val('2018-10-10');
+
+$('#edit').submit(function(e){
+    e.preventDefault();
+    console.log('Submit ' + $('input#beerid').attr('name'));
+    console.log(e);
+});
 </script>
 </html>

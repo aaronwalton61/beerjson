@@ -12,6 +12,7 @@ $(document).on('pageshow', '#editPage', function(event) {
         $("#vintage").remove();
         $("#Location").remove();
         $("#List").remove();
+        $('#beerDrinkDate').remove();
 //        $("").remove();
         $.getJSON(serviceURL + 'getservingtypes.php', displayServingTypes);
         $.getJSON(serviceURL + 'getbeer.php?id='+id, editBeer);
@@ -20,7 +21,6 @@ $(document).on('pageshow', '#editPage', function(event) {
         $("#beerURL").remove();
         $("#beerCharacter").remove();
         $("#beerCellared").remove();
-        $("#beerCellarDate").remove();
         $("#CellarServing").remove();
         $("#beerPhoto").remove();
         $("flipswitch-HighGrav").remove();
@@ -32,6 +32,13 @@ $(document).on('pageshow', '#editPage', function(event) {
     }
 });
 
+$(document).ready(function() {
+    $('#edit').submit(function(e){
+        e.preventDefault();
+        console.log('Submit ' + $('input#beerid').attr('name'));
+    });
+});
+
 function editBeer(data) {
     console.log('(function)* editBeer()')
     var beer = data.item;
@@ -39,12 +46,13 @@ function editBeer(data) {
     console.log(beer);
 
     $('input#beerid').val(beer.beer_id);
+    $('input#beerid').attr('name', 'beer')
     $('input#beerName').val(beer.Name);
     $('input#beerURL').val(beer.BeerAdvocate);
     $('input#beerCharacter').val(beer.Characteristics);
     $('input#beerCellared').val(beer.cellared);
-    $('input#beerCellarDate').val(beer.CellarDate);
     $('input#beerPhoto').val(beer.photo_id)
+    $('input#beerCellarDate').val(beer.CellarDate);
 
     if (beer.ExtendedCellar == "1")
         $('#flipswitch-HighGrav').prop("checked", true);
@@ -72,6 +80,20 @@ function editServing(data) {
     var serving = data.item;
     console.log('Number of items in query: ' + serving.length);
     console.log(serving);
+
+    $('input#beerid').val(serving.id);
+    $('input#beerid').attr('name', 'serving')
+    $('input#beerName').val(serving.Name2);
+    $('input#beerCellarDate').val(serving._CellarDate);
+    $('input#beerDrinkDate').val(serving.Date);
+    $('select#Serving').val(serving.Serving); // works internal
+    $('select#Serving option[value="'+serving.Serving+'"]').attr('selected', 'selected');//works internal
+    $('select#List').val(serving.List); // works internal
+    $('select#List option[value="'+serving.List+'"]').attr('selected', 'selected');//works internal
+    $('select#Location').val(serving.Location); // works internal
+    $('select#Location option[value="'+serving.Location+'"]').attr('selected', 'selected');//works internal
+    $('#notes').val(serving.Review);
+    $('#notes').textinput('refresh');
 }
 
 // function displayServings(data) {
