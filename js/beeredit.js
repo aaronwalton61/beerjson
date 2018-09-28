@@ -3,6 +3,7 @@ var serviceURL = "http://beertest.aaronwalton.org/services/";
     var serving;
 
 $(document).on('pageshow', '#editPage', function(event) {
+    console.log('(pageshow)* editPage()')
     id = getUrlVars()["id"];
     serving = getUrlVars()["serving"];
     //    	$.getJSON(serviceURL + 'getservings.php?id='+id, displayServings);
