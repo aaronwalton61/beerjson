@@ -1,12 +1,16 @@
 var serviceURL = "http://beertest.aaronwalton.org/services/";
     var id;
     var serving;
+    var beer;
+    var cellar;
 
 $(document).on('pageshow', '#editPage', function(event) {
     console.log('(pageshow)* editPage()')
     id = getUrlVars()["id"];
     serving = getUrlVars()["serving"];
-    //    	$.getJSON(serviceURL + 'getservings.php?id='+id, displayServings);
+    beer = getUrlVars()["beer"];
+    cellar = getUrlVars()["cellar"];
+
     if (id !== undefined) {
         $("#Serving").remove();
         $("#vintage").remove();
@@ -15,7 +19,14 @@ $(document).on('pageshow', '#editPage', function(event) {
         $('#beerDrinkDate').remove();
 //        $("").remove();
         $.getJSON(serviceURL + 'getservingtypes.php', displayServingTypes);
-        $.getJSON(serviceURL + 'getbeer.php?id='+id, editBeer);
+        if (id !== "0") {
+            $.getJSON(serviceURL + 'getbeer.php?id='+id, editBeer);
+        }
+        else
+        {
+            // this is for NEW beer.
+            addBeer();
+        }
     }
     if (serving !== undefined) {
         $("#beerURL").remove();
@@ -28,7 +39,14 @@ $(document).on('pageshow', '#editPage', function(event) {
         $.getJSON(serviceURL + 'getlocations.php', displayLocations);
         $.getJSON(serviceURL + 'getlists.php', displayLists);
         $.getJSON(serviceURL + 'getservingtypes.php', displayServingTypes);
-        $.getJSON(serviceURL + 'getserving.php?serving='+serving, editServing);
+        if (serving !=="0") {
+            $.getJSON(serviceURL + 'getserving.php?serving='+serving, editServing);
+        }
+        else
+        {
+            // this is for NEW beer serving.
+            $.getJSON(serviceURL + 'getbeer.php?id='+beer, addServing);
+        }
     }
 });
 
@@ -38,6 +56,24 @@ $(document).ready(function() {
         console.log('Submit ' + $('input#beerid').attr('name'));
     });
 });
+
+function addBeer() {
+    console.log('addBeer - ');
+    $('input#beerid').val(0);
+    $('#editPage h1').val('Add Beer')
+}
+
+function addServing(data) {
+    console.log('addServing - ');
+    var beer = data.item;
+    console.log(beer);
+    // this will become Name2
+    $('input#beerName').val(beer.Name);
+    $('input#beerid').val(beer.id);
+    $('input#servid').val(0);
+    $('#editPage h1').val('Add Serving');
+//    $('input#beerid').attr('name', 'serving')
+}
 
 function editBeer(data) {
     console.log('(function)* editBeer()')

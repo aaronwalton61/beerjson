@@ -6,9 +6,9 @@ $(document).on('pageshow', '#detailsPage', function(event) {
 	$.getJSON(serviceURL + 'getservings.php?id='+id, displayServings);
 });
 
-function detailsPage(id) {
-
-}
+// function detailsPage(id) {
+//
+// }
 
 function displayBeer(data) {
     console.log('(function)- displayBeer()');
@@ -26,10 +26,10 @@ function displayBeer(data) {
     $('#BeerAdvocate').attr('href', beer.BeerAdvocate);
 	$('#BeerPhoto').text('Photo (id='+beer.photo_id+')');
     if (beer.cellared > 0) {
-	    $('#CellarServ').attr('href', 'addserv.html?beer=' + beer.beer_id + '&cellar=yes');
+	    $('#CellarServ').attr('href', 'beeredit.html?serving=0&beer=' + beer.beer_id + '&cellar=yes');
         $('a#CellarServ').text(beer.cellared + ' beer(s) cellared ' + beer.CellarDate)
     }
-	$('a#AddServ').attr('href', 'addserv.html?beer=' + beer.beer_id);
+	$('a#AddServ').attr('href', 'beeredit.html?serving=0&beer=' + beer.beer_id);
 //    $('#details').listview('refresh');
 }
 
