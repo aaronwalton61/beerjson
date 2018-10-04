@@ -1,7 +1,16 @@
 <?php
 include 'config.php';
 
-$sql = "SELECT * FROM `BeerLists`";
+$sql = "SELECT
+	BeerServings.List as Name,
+    COUNT(*) AS `num`,
+    BeerLists.Graphic,
+    BeerLists.order
+FROM BeerServings
+INNER JOIN BeerLists
+ON BeerLists.Name = BeerServings.List
+GROUP BY BeerServings.List
+ORDER BY BeerLists.order";
 
 try {
 	$dbh = new PDO("mysql:host=$dbhost;dbname=$dbname", $dbuser, $dbpass);

@@ -10,10 +10,12 @@ function getbeerLists() {
         console.log('#Lists - getbeerLists()');
     	$.getJSON(serviceURL + 'getlists.php', function(data) {
 		$('#beerLists li').remove();
-		beers = data.items;
+		lists = data.items;
 
-		$.each(beers, function(index, beer) {
-			$('#beerLists').append('<li><a href=javascript:getbeerList("' + beer.Name + '")><img src=images\\' + beer.Graphic + '><h2>&nbsp;' + beer.Name + '</h2><span class="ui-li-count">00</span></a></li>');
+		$.each(lists, function(index, list) {
+			$('#beerLists').append('<li><a href=javascript:getbeerList("' + list.Name
+                + '")><img src=images\\' + list.Graphic + '><h2>&nbsp;' + list.Name
+                + '</h2><span class="ui-li-count">' + list.num + '</span></a></li>');
 		});
 		$('#beerLists').listview('refresh');
 	});
