@@ -20,7 +20,7 @@ function getLastList() {
       		if ( beer.BeerAdvocate !== "" && beer.BeerAdvocate !== null )
           		icon = icon + "<img title='BA' src='images/BeerAdvocate.gif'>";
 			$('#beerLast').append('<li><a href="beerdetails.html?serving=' + beer.beer_id + '">'
-				+ '<img src="images/bottle.png"/>' + '<h4>' + beer.Name + '</h4><span class="ui-li-aside">'
+				+ /*'<img src="images/bottle.png"/>' +*/ '<h4>' + beer.Name + '</h4><span class="ui-li-aside">'
 				+ icons(beer.Characteristics + ' ' + beer.Serving) + icon + '</span><p>'
 				+ beer.Serving + ' at '+ beer.Location + ' on ' + beer.Date + '</p>' + /*'<span class="ui-li-count">' + beer.cellared +*/ '</span></a><a href="#" class="delete">Delete</a></li>');
 		});
