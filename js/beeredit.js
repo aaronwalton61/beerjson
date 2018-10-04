@@ -26,6 +26,7 @@ $(document).on('pageshow', '#editPage', function(event) {
         {
             // this is for NEW beer.
             addBeer();
+            $("#buttonDel").remove();
         }
     }
     if (serving !== undefined) {
@@ -34,7 +35,7 @@ $(document).on('pageshow', '#editPage', function(event) {
         $("#beerCellared").remove();
         $("#CellarServing").remove();
         $("#beerPhoto").remove();
-        $("flipswitch-HighGrav").remove();
+        $("#flipswitch-HighGrav").remove();
 //        $("").remove();
         $.getJSON(serviceURL + 'getlocations.php', displayLocations);
         $.getJSON(serviceURL + 'getlists.php', displayLists);
@@ -46,6 +47,7 @@ $(document).on('pageshow', '#editPage', function(event) {
         {
             // this is for NEW beer serving.
             $.getJSON(serviceURL + 'getbeer.php?id='+beer, addServing);
+            $("#buttonDel").remove();
         }
     }
 });
