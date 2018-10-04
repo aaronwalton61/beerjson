@@ -7,7 +7,6 @@ $('#Deep').bind('pageinit', function(event) {
 });
 
 function getbeerDeep() {
-	var icon;
 	console.log('#Deep - getbeerDeep()');
 	$.getJSON(serviceURL + 'getdeep.php', function(data) {
 		$('#beerDeep li').remove();
@@ -21,8 +20,8 @@ function getbeerDeep() {
             if ( beer.BeerAdvocate !== "" && beer.BeerAdvocate !== null )
                 icon = icon + "<img title='BA' src='images/BeerAdvocate.gif'>";
 			$('#beerDeep').append('<li><a href="beerdetails.html?id=' + beer.beer_id + '">'
-				+ '<img src="images/bottle.png"/>' + '<h4>' + beer.Name + '</h4><span class="ui-li-aside">'
-				+ icons(beer.Characteristics + ' ' + beer.CellarServing) + icon + '</span><p>'
+				+ /*'<img src="images/bottle.png"/>' +*/ '<h4>' + beer.Name + '</h4><span class="ui-li-aside">'
+				+ icons(beer.Characteristics + ' ' + beer.CellarServing) + icon + '&nbsp;&nbsp;</span><p>'
 				+ beer.cellared + ' cellared on: ' + beer.CellarDate + ' in ' + beer.CellarServing
 				+	' ' + beer.BeerAdvocate + '</p>' + '<span class="ui-li-count">' + beer.cellared + '</span></a></li>');
 		});

@@ -7,7 +7,6 @@ $('#Cellar').bind('pageinit', function(event) {
 });
 
 function getCellarList() {
-	var icon;
 	console.log('#Cellar - getCellarList()');
 	$.getJSON(serviceURL + 'getcellar.php', function(data) {
 		$('#beerCellar li').remove();
@@ -21,8 +20,8 @@ function getCellarList() {
 			if ( beer.BeerAdvocate !== "" && beer.BeerAdvocate !== null )
 				icon = icon + "<img title='BA' src='images/BeerAdvocate.gif'>";
 			$('#beerCellar').append('<li><a href="beerdetails.html?id=' + beer.beer_id + '">'
-				+ '<img src="images/bottle.png"/>' + '<h4>' + beer.Name + '</h4><span class="ui-li-aside">'
-				+ icons(beer.Characteristics + ' ' + beer.CellarServing) + icon + '</span><p>'
+				+ /*'<img src="images/bottle.png"/>' +*/ '<h4>' + beer.Name + '</h4><span class="ui-li-aside">'
+				+ icons(beer.Characteristics + ' ' + beer.CellarServing) + icon + '&nbsp;&nbsp;</span><p>'
 				+ beer.cellared + ' cellared on: ' + beer.CellarDate + ' in ' + beer.CellarServing
 				+	' ' + beer.BeerAdvocate + '</p>' + '<span class="ui-li-count">' + beer.cellared + '</span></a></li>');
 		});
