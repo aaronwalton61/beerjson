@@ -12,7 +12,7 @@
             <h1>Edit Beer</h1>
         </div>
         <div data-role="content">
-            <form id="edit" title="Edit Beer">
+            <form id="edit" title="Edit Beer2">
                 <input type="submit" data-theme="e" value="Modify">
                 <input id="beerid" type=hidden name="beerid" value="" />
                 <div data-role="fieldcontain">
@@ -65,9 +65,9 @@
                     <label id="beerPhoto" for="beerPhoto">Photo:</label>
                     <input id="beerPhoto" type="number" name="beerPhoto" value="" />
                 </div>
-                <div id="flipswitch-HighGrav" data-role="fieldcontain">
-                    <label id="flipswitch-HighGrav" for="flipswitch-HighGrav">HighGrav:</label>
-                    <input id="flipswitch-HighGrav" type="checkbox" data-role="flipswitch" data-on-text="Yes" data-off-text="No" data-mini="true">
+                <div id="HighGrav" data-role="fieldcontain">
+                    <label id="HighGrav" for="HighGrav">HighGrav:</label>
+                    <input id="HighGrav" type="checkbox" data-role="flipswitch" data-on-text="Yes" data-off-text="No" data-mini="true">
                 </div>
                 <div data-role="fieldcontain">
                     <label for="notes">Notes:</label>
@@ -89,7 +89,7 @@ $("#beerCharacter").remove();
 $("#beerCellared").remove();
 $("#CellarServing").remove();
 $("#beerPhoto").remove();
-$("flipswitch-HighGrav").remove();
+$("HighGrav").remove();
 $('input#beerid').attr('name', 'serving')
 
 $('#notes').val('Notes go here');
@@ -99,10 +99,29 @@ $('#notes').val('Notes go here');
 $('a#BeerName').text( 'Big Bad Beer' );
 $('#CellarDate').val('2018-10-10');
 
-$('#edit').submit(function(e){
-    e.preventDefault();
-    console.log('Submit ' + $('input#beerid').attr('name'));
-    console.log(e);
+$(document).ready(function() {
+    var $form = $('#edit');
+    $form.submit(function(e){
+        console.log('Submit ' + $('input#beerid').attr('name'));
+        $form.hide();
+        $.ajax({
+            type: 'POST',
+            url: serviceURL+'modify.php',
+            data: $form.serialize(),
+            // beforeSend: function() {
+            //     $loading.show();
+            // },
+            // complete: function() {
+            //     $loading.hide();
+            // },
+            success: function(data) {
+                console.log('Modify Success');
+            }
+        });
+        e.preventDefault();
+        return false;
+    });
 });
+
 </script>
 </html>

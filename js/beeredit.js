@@ -3,6 +3,7 @@ var serviceURL = "http://beertest.aaronwalton.org/services/";
     var serving;
     var beer;
     var cellar;
+//var $loading = $('#loading');
 
 $(document).on('pageshow', '#editPage', function(event) {
     console.log('(pageshow)* editPage()')
@@ -35,7 +36,7 @@ $(document).on('pageshow', '#editPage', function(event) {
         $("#beerCellared").remove();
         $("#CellarServing").remove();
         $("#beerPhoto").remove();
-        $("#flipswitch-HighGrav").remove();
+        $("#HighGrav").remove();
 //        $("").remove();
         $.getJSON(serviceURL + 'getlocations.php', displayLocations);
         $.getJSON(serviceURL + 'getlists.php', displayLists);
@@ -52,17 +53,36 @@ $(document).on('pageshow', '#editPage', function(event) {
     }
 });
 
-$(document).ready(function() {
-    $('#edit').submit(function(e){
-        e.preventDefault();
+$(document).on('pageshow', '#editPage',function() {
+    var $form = $('#edit');
+    $form.submit(function(e){
         console.log('Submit ' + $('input#beerid').attr('name'));
+        $form.hide();
+        $.ajax({
+            type: 'POST',
+            url: serviceURL+'modify.php',
+            data: $form.serialize(),
+            // beforeSend: function() {
+            //     $loading.show();
+            // },
+            // complete: function() {
+            //     $loading.hide();
+            // },
+            success: function(data) {
+                console.log('Modify Success');
+            }
+        });
+        e.preventDefault();
+        return false;
     });
 });
+
+// section here is for adding a Beer or a Serving
 
 function addBeer() {
     console.log('addBeer - ');
     $('input#beerid').val(0);
-    $('#editPage h1').val('Add Beer')
+    $('h1 , #editPage').val('Add Beer');
 }
 
 function addServing(data) {
@@ -93,10 +113,10 @@ function editBeer(data) {
     $('input#beerCellarDate').val(beer.CellarDate);
 
     if (beer.ExtendedCellar == "1")
-        $('#flipswitch-HighGrav').prop("checked", true);
+        $('#HighGrav').prop("checked", true);
     else {
-        $('#flipswitch-HighGrav').prop("checked", false);
-        $('#flipswitch-HighGrav').flipswitch('refresh');
+        $('#HighGrav').prop("checked", false);
+        $('#HighGrav').flipswitch('refresh');
     }
 
     $('#notes').val(beer.Notes);

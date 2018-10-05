@@ -3,8 +3,8 @@
         <h1>Edit Beer</h1>
     </div>
     <div data-role="content">
-        <form id="edit" title="Edit Beer">
-            <input type="submit" data-theme="e" value="Modify">
+        <form id="edit" title="Edit Beer" method="POST">
+            <input id="" type="submit" data-theme="e" value="Modify">
             <input id="beerid" type=hidden name="beerid" value="" />
             <input id="servid" type=hidden name="servid" value="" />
             <div data-role="fieldcontain">
@@ -57,9 +57,9 @@
                 <label id="beerPhoto" for="beerPhoto">Photo:</label>
                 <input id="beerPhoto" type="number" name="beerPhoto" value="" />
             </div>
-            <div id="flipswitch-HighGrav" data-role="fieldcontain">
-                <label id="flipswitch-HighGrav" for="flipswitch-HighGrav">HighGrav:</label>
-                <input id="flipswitch-HighGrav" type="checkbox" data-role="flipswitch" data-on-text="Yes" data-off-text="No" data-mini="true">
+            <div id="HighGrav" data-role="fieldcontain">
+                <label id="HighGrav" for="HighGrav">HighGrav:</label>
+                <input id="HighGrav" type="checkbox" data-role="flipswitch" data-on-text="Yes" data-off-text="No" data-mini="true">
             </div>
             <div data-role="fieldcontain">
                 <label for="notes">Notes:</label>
