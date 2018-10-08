@@ -3,9 +3,9 @@ include 'config.php';
 
 // get all the form contents
 $beerid = $_POST['beerid'];
-$servingid = $_POST['servid'];
+$servid = $_POST['servid'];
 
-$beername = str_replace("'", "''", $_POST['beerName']);
+$beername = $_POST['beerName'];
 $url = $_POST['beerURL'];
 $date = $_POST['beerDrinkDate'];
 //$thoughts = str_replace("'", "''", $_POST['thoughts']);
@@ -16,98 +16,77 @@ $cellar = $_POST['beerCellared'];
 $cellardate = $_POST['beerCellarDate'];
 $photo = $_POST['beerPhoto'];
 $char = $_POST['beerCharacter'];
-$check = $_POST['HighGrav'];
+$deep = $_POST['HighGrav'];
 $vintage = $_POST['vintage'];
 $notes = $_POST['notes'];  //both notes and thoughts
 
-$deep = $_POST['deep'];
+$sqlserving =  "UPDATE BeerServings
+                SET Name2=:beerName,
+                    beer_id=:beerid,
+                    Serving=:CellarServing,
+                    List=:List,
+                    Location=:Location,
+                    Review=:notes,
+                    Date=:beerDrinkData,
+                    _CellarDate=:beerCellarDate,
+                    Vintage=:vintage
+                WHERE id=:servid";
+
+$sqlbeer = "UPDATE Beer
+            SET Name=:beerName,
+                BeerAdvocate=:beerURL,
+                Characteristics=:beerCharacter,
+                cellared=:beerCellared,
+                ExtendedCellar=:HighGrav,
+                CellarDate=:beerCellarDate,
+                CellarServing=:CellarServing,
+                photo_id=:beerPhoto,
+                Notes=:notes
+            WHERE beer_id=:beerid";
 
 
-$sqlserving =  "UPDATE BeerServings b
-                SET b.Name2=:beerName,
-                    b.Serving=:CellarServing,
-                    b.List=:List,
-                    b.Location=:Location,
-                    b.Review=:notes,
-                    b.Date=:beerDrinkData,
-                    b._CellarDate=:beerCellarDate,
-                    b.Vintage=:vintage;
-                WHERE b.id=:servid";
-
-$sqlbeer = "UPDATE Beer b
-            SET b.Name=:beerName,
-                b.BeerAdvocate=:beerURL,
-                b.Characteristics=:beerCharacter,
-                b.cellared=:beerCellared,
-                b.ExtendedCellar=:HighGrav,
-                b.CellarDate=:beerCellarDate,
-                b.CellarServing=:CellarServing,
-                b.photo_id=:beerPhoto,
-                b.Notes=:notes
-            WHERE b.beer_id=:beerid";
-
-if ( $beerid != "" || $servingid != "" )
+if ( $beerid != "" || $servid != "" )
 {
-    if ( $beerid != "" )
-        $query = "UPDATE Beer SET Name='{$beername}'";
+    if ( $servid != "" )
+        $sql = $sqlserving;
     else
-        $query = "UPDATE BeerServings SET Name2='{$beername}'";
-
-    //Query of Beer to Edit
-    if ( $url != "" )
-       $query = $query . ", BeerAdvocate='{$url}'";
-    if ( $thoughts != "" )
-       $query = $query . ", Review='{$thoughts}'";
-    if ( $vintage != "" )
-       $query = $query . ", Vintage='{$vintage}'";
-    if ( $date !="" )
-       $query = $query . ", Date='{$date}'";
-    if ( $serving !="" )
-    {
-       if ( $beerid != "" )
-          $query = $query . ", CellarServing='{$serving}'";
-       else
-          $query = $query . ", Serving='{$serving}'";
-    }
-    if ( $location !="" )
-       $query = $query . ", Location='{$location}'";
-
-    if ( $char !="" )
-       $query = $query . ", Characteristics='{$char}'";
-
-    if ( $list !="" )
-       $query = $query . ", List='{$list}'";
-
-    if ( $cellar !="" )
-       $query = $query . ", cellared='{$cellar}'";
-
-    if ( $deep !="" )
-       $query = $query . ", ExtendedCellar='{$deep}'";
-
-    if ( $cellardate !="" )
-       $query = $query . ", CellarDate='{$cellardate}'";
-
-    if ( $photo != "" )
-       $query = $query . ", photo_id='{$photo}'";
-
-    if ( $notes != "" )
-       $query = $query . ", Notes='{$notes}'";
-
-    if ( $beerid != "" )
-        $query = $query . " WHERE beer_id='{$beerid}'";
-    else
-        $query = $query . " WHERE id='{$servingid}'";
-
+        $sql = $sqlbeer;
+}
 
 try {
 	$dbh = new PDO("mysql:host=$dbhost;dbname=$dbname", $dbuser, $dbpass);
 	$dbh->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-	$stmt = $dbh->prepare($sql);
-	$stmt->bindParam("serving", $serving);
+    $stmt = $dbh->prepare($sql);
+    if ( $servid != "" ) {
+        //Query for Serving to Edit
+        $stmt->bindParam("beerName", $beername);
+        $stmt->bindParam("beerid", $beerid);
+        $stmt->bindParam("CellarServing", $serving);
+        $stmt->bindParam("Lists", $list);
+        $stmt->bindParam("Location", $location);
+        $stmt->bindParam("notes", $notes);
+        $stmt->bindParam("beerDrinkDate", $date);
+        $stmt->bindParam("beerCellarDate", $cellardate);
+        $stmt->bindParam("vintage", $vintage);
+        $stmt->bindParam("servid", $servid);
+    }
+    else {
+        //Query of Beer to Edit
+        $stmt->bindParam("beerName", $beername);
+        $stmt->bindParam("beerURL", $url);
+        $stmt->bindParam("beerCharacter", $char);
+        $stmt->bindParam("beerCellared", $cellar);
+        $stmt->bindParam("HighGrav", $deep);
+        $stmt->bindParam("beerCellarDate", $cellardate);
+        $stmt->bindParam("CellarServing", $serving);
+        $stmt->bindParam("beerPhoto", $photo);
+        $stmt->bindParam("notes", $thoughts);
+        $stmt->bindParam("beerid", $beerid);
+    }
 	$stmt->execute();
-	$data = $stmt->fetchObject();
-	$dbh = null;
-	echo '{"item":'. json_encode($data) .'}';
+	// $data = $stmt->fetchObject();
+	// $dbh = null;
+	// echo '{"item":'. json_encode($data) .'}';
 } catch(PDOException $e) {
 	echo '{"error":{"text":'. $e->getMessage() .'}}';
 }

@@ -57,7 +57,8 @@ $(document).on('pageshow', '#editPage',function() {
     var $form = $('#edit');
     $form.submit(function(e){
         console.log('Submit ' + $('input#beerid').attr('name'));
-        $form.hide();
+//        $form.hide();
+        console.log($form.serialize());
         $.ajax({
             type: 'POST',
             url: serviceURL+'modify.php',
@@ -69,7 +70,21 @@ $(document).on('pageshow', '#editPage',function() {
             //     $loading.hide();
             // },
             success: function(data) {
-                console.log('Modify Success');
+                console.log('Modify Done');
+                var dat = data.items;
+                console.log(dat);
+            },
+            error: function(obj, err, e) {
+                console.log('Fail: ' + err + ' ' + e);
+                console.log('Object ------>');
+                console.log(obj);
+                console.log('Exception --------->');
+                console.log(e);
+            },
+            conplete: function(obj, status) {
+                console.log('Completion status: ' + status);
+                console.log('Object  ------>');
+                console.log(obj);
             }
         });
         e.preventDefault();
@@ -104,7 +119,7 @@ function editBeer(data) {
     console.log(beer);
 
     $('input#beerid').val(beer.beer_id);
-    $('input#beerid').attr('name', 'beer')
+//    $('input#beerid').attr('name', 'beerid')
     $('input#beerName').val(beer.Name);
     $('input#beerURL').val(beer.BeerAdvocate);
     $('input#beerCharacter').val(beer.Characteristics);
@@ -114,10 +129,8 @@ function editBeer(data) {
 
     if (beer.ExtendedCellar == "1")
         $('#HighGrav').prop("checked", true);
-    else {
+    else
         $('#HighGrav').prop("checked", false);
-        $('#HighGrav').flipswitch('refresh');
-    }
 
     $('#notes').val(beer.Notes);
     $('#notes').textinput('refresh');
@@ -139,8 +152,9 @@ function editServing(data) {
     console.log('Number of items in query: ' + serving.length);
     console.log(serving);
 
-    $('input#beerid').val(serving.id);
-    $('input#beerid').attr('name', 'serving')
+    $('input#servid').val(serving.id);
+    $('input#beerid').val(serving.beer_id);
+//    $('input#beerid').attr('name', 'serving')
     $('input#beerName').val(serving.Name2);
     $('input#beerCellarDate').val(serving._CellarDate);
     $('input#beerDrinkDate').val(serving.Date);
@@ -167,9 +181,8 @@ function editServing(data) {
 // }
 
 function displayLocations(data) {
-    console.log('(function)* displayLocations()')
     var locations = data.items;
-    console.log('Number of Items: ' + locations.length)
+    console.log('(function)* displayLocations()  Number of Items: ' + locations.length)
     console.log(locations);
 
     $.each(locations, function(index, location) {
@@ -178,9 +191,8 @@ function displayLocations(data) {
 }
 
 function displayLists(data) {
-    console.log('(function)* displayLists()')
     var lists = data.items;
-    console.log('Number of Items: ' + lists.length)
+    console.log('(function)* displayLists()  Number of Items: ' + lists.length)
     console.log(lists);
 
     $.each(lists, function(index, list) {
@@ -189,9 +201,8 @@ function displayLists(data) {
 }
 
 function displayServingTypes(data) {
-    console.log('(function)* displayServingTypes()')
     var servingtypes = data.items;
-    console.log('Number of Items: ' + servingtypes.length)
+    console.log('(function)* displayServingTypes()  Number of Items: ' + servingtypes.length)
     console.log(servingtypes);
 
     $.each(servingtypes, function(index, servingtype) {
