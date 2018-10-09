@@ -56,7 +56,7 @@ $(document).on('pageshow', '#editPage', function(event) {
 $(document).on('pageshow', '#editPage',function() {
     var $form = $('#edit');
     $form.submit(function(e){
-        console.log('Submit ' + $('input#beerid').attr('name'));
+        console.log('Submit - beerid=' + $('input#beerid').val() + ' servid=' + $('input#servid').val());
 //        $form.hide();
         console.log($form.serialize());
         $.ajax({
@@ -97,7 +97,7 @@ $(document).on('pageshow', '#editPage',function() {
 function addBeer() {
     console.log('addBeer - ');
     $('input#beerid').val(0);
-    $('h1 , #editPage').val('Add Beer');
+    $('h1 , #editPage').val('Add Beer');    ///NOT WORKING
 }
 
 function addServing(data) {
@@ -108,8 +108,8 @@ function addServing(data) {
     $('input#beerName').val(beer.Name);
     $('input#beerid').val(beer.id);
     $('input#servid').val(0);
-    $('#editPage h1').val('Add Serving');
-//    $('input#beerid').attr('name', 'serving')
+    $('label#notes').val('Review:')   //NOT WORKING
+    $('#editPage h1').val('Add Serving');   //NOT WORKING
 }
 
 function editBeer(data) {
@@ -119,7 +119,6 @@ function editBeer(data) {
     console.log(beer);
 
     $('input#beerid').val(beer.beer_id);
-//    $('input#beerid').attr('name', 'beerid')
     $('input#beerName').val(beer.Name);
     $('input#beerURL').val(beer.BeerAdvocate);
     $('input#beerCharacter').val(beer.Characteristics);
@@ -154,10 +153,10 @@ function editServing(data) {
 
     $('input#servid').val(serving.id);
     $('input#beerid').val(serving.beer_id);
-//    $('input#beerid').attr('name', 'serving')
     $('input#beerName').val(serving.Name2);
     $('input#beerCellarDate').val(serving._CellarDate);
     $('input#beerDrinkDate').val(serving.Date);
+    $('input#vintage').val(serving.Vintage);
     $('select#Serving').val(serving.Serving); // works internal
     $('select#Serving option[value="'+serving.Serving+'"]').attr('selected', 'selected');//works internal
     $('select#List').val(serving.List); // works internal
@@ -165,7 +164,8 @@ function editServing(data) {
     $('select#Location').val(serving.Location); // works internal
     $('select#Location option[value="'+serving.Location+'"]').attr('selected', 'selected');//works internal
     $('#notes').val(serving.Review);
-    $('#notes').textinput('refresh');
+    $('form#edit').attr('title', 'Edit Serving');
+//    $('#notes').textinput('refresh');
 }
 
 // function displayServings(data) {

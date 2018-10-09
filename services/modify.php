@@ -2,46 +2,47 @@
 include 'config.php';
 
 // get all the form contents
+// for both
 $beerid = $_POST['beerid'];
-$servid = $_POST['servid'];
-
-$beername = $_POST['beerName'];
-$url = $_POST['beerURL'];
-$date = $_POST['beerDrinkDate'];
-//$thoughts = str_replace("'", "''", $_POST['thoughts']);
-$serving =  $_POST['CellarServing'];
-$location =  $_POST['Location'];
-$list =  $_POST['List'];
-$cellar = $_POST['beerCellared'];
 $cellardate = $_POST['beerCellarDate'];
+$serving =  $_POST['CellarServing'];
+$notes = $_POST['notes'];  //both notes and thoughts
+$beername = $_POST['beerName'];
+// for beer
+$url = $_POST['beerURL'];
+$cellar = $_POST['beerCellared'];
 $photo = $_POST['beerPhoto'];
 $char = $_POST['beerCharacter'];
 $deep = $_POST['HighGrav'];
+// for serving
+$servid = $_POST['servid'];
+$date = $_POST['beerDrinkDate'];
+$location =  $_POST['Location'];
+$list =  $_POST['List'];
 $vintage = $_POST['vintage'];
-$notes = $_POST['notes'];  //both notes and thoughts
 
 $sqlserving =  "UPDATE BeerServings
-                SET Name2=:beerName,
-                    beer_id=:beerid,
-                    Serving=:CellarServing,
-                    List=:List,
-                    Location=:Location,
-                    Review=:notes,
-                    Date=:beerDrinkData,
-                    _CellarDate=:beerCellarDate,
-                    Vintage=:vintage
+                SET Name2=:beerName
+                   , beer_id=:beerid
+                   , Serving=:CellarServing
+                   , List=:List
+                   , Location=:Location
+                   , Review=:notes
+                   , Date=:beerDrinkDate
+                   , _CellarDate=:beerCellarDate
+                   , Vintage=:vintage
                 WHERE id=:servid";
 
 $sqlbeer = "UPDATE Beer
-            SET Name=:beerName,
-                BeerAdvocate=:beerURL,
-                Characteristics=:beerCharacter,
-                cellared=:beerCellared,
-                ExtendedCellar=:HighGrav,
-                CellarDate=:beerCellarDate,
-                CellarServing=:CellarServing,
-                photo_id=:beerPhoto,
-                Notes=:notes
+            SET Name=:beerName
+                , BeerAdvocate=:beerURL
+                , Characteristics=:beerCharacter
+                , cellared=:beerCellared
+                , ExtendedCellar=:HighGrav
+                , CellarDate=:beerCellarDate
+                , CellarServing=:CellarServing
+                , photo_id=:beerPhoto
+                , Notes=:notes
             WHERE beer_id=:beerid";
 
 
@@ -62,7 +63,7 @@ try {
         $stmt->bindParam("beerName", $beername);
         $stmt->bindParam("beerid", $beerid);
         $stmt->bindParam("CellarServing", $serving);
-        $stmt->bindParam("Lists", $list);
+        $stmt->bindParam("List", $list);
         $stmt->bindParam("Location", $location);
         $stmt->bindParam("notes", $notes);
         $stmt->bindParam("beerDrinkDate", $date);
